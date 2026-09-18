@@ -3,7 +3,7 @@ name = "business-analytics-portfolio"
 version = "0.1.0"
 description = "Business analytics portfolio: financial modeling, forecasting, and data analysis coursework projects"
 authors = [
-    { name = "Miguel L. Ferguson II", email = "your_email@example.com" }
+    { name = "Miguel L. Ferguson II", email = "miguelferguson38@gmail.com" }
 ]
 readme = "README.md"
 requires-python = ">=3.10"
