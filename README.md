@@ -1,4 +1,4 @@
-# Business Analytics Portfolio
+﻿# Business Analytics Portfolio
 
 Portfolio repository for business analytics coursework, built around financial
 modeling, forecasting, budgeting/variance analysis, and data-driven decision
@@ -18,17 +18,17 @@ This repository demonstrates:
 
 ```
 business-analytics-portfolio/
-├── src/                # Reusable Python modules (functions, classes, pipelines)
-├── tests/              # Unit tests (pytest)
-├── docs/               # Project documentation, including AI_USE.md
-├── data/
-│   ├── raw/            # Original, unmodified source data (gitignored contents)
-│   └── processed/      # Cleaned/derived data (gitignored contents)
-├── notebooks/          # Jupyter notebooks for exploration and analysis
-├── pyproject.toml      # Project metadata and dependencies (UV-managed)
-├── .gitignore
-├── LICENSE
-└── README.md
+â”œâ”€â”€ src/                # Reusable Python modules (functions, classes, pipelines)
+â”œâ”€â”€ tests/              # Unit tests (pytest)
+â”œâ”€â”€ docs/               # Project documentation, including docs/AI_USE.md
+â”œâ”€â”€ data/
+â”‚   â”œâ”€â”€ raw/            # Original, unmodified source data (gitignored contents)
+â”‚   â””â”€â”€ processed/      # Cleaned/derived data (gitignored contents)
+â”œâ”€â”€ notebooks/          # Jupyter notebooks for exploration and analysis
+â”œâ”€â”€ pyproject.toml      # Project metadata and dependencies (UV-managed)
+â”œâ”€â”€ .gitignore
+â”œâ”€â”€ LICENSE
+â””â”€â”€ README.md
 ```
 
 ## Environment Setup (UV)
@@ -127,5 +127,5 @@ used in this repository. It is kept current as the project evolves.
 
 ## Author
 
-Miguel L. Ferguson II — PhD student, Business Analytics, University of South
+Miguel L. Ferguson II â€” PhD student, Business Analytics, University of South
 Alabama; finance and business analytics professional.
