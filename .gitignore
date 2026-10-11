@@ -50,3 +50,10 @@ htmlcov/
 
 # Logs
 *.log
+
+# A4 pipeline outputs
+data/processed/*.db
+data/processed/*.db-*
+logs/
+data/raw/*
+!data/raw/README.md
