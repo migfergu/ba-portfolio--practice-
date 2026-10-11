@@ -28,7 +28,30 @@ repository, per the course AI policy.
 I reviewed all AI-assisted content for correctness and adjusted it to match
 my own project conventions before submitting.
 
+## Assignment 3: Project Proposal & Data Source Identification
+
+**Files:** `docs/BUS_751_Assignment3_ProjectProposal.pdf` (Markdown copy: `docs/BUS_751_Assignment3_ProjectProposal.md`)
+**Tool:** Claude (Anthropic)
+**Date:** September 2026
+
+**Author's contribution.** The research ideas and the direction of this study are my own. The proposal builds on a combination of my previous work on generative AI and financial analysts. I wrote and revised the submitted text, made the final design choices, and am responsible for its content and citations.
+
+**How AI was used.**
+- Formatting the proposal and cleaning up its presentation
+- Earlier in the process, discussing and drafting alternative versions of the proposal's structure, research design, and data sources, which I used as reference while developing my own version
+- Converting the final Word document to PDF and Markdown for this repository
+
+## Assignment 4: Database Design & Data Pipeline
+
+**Tool:** Claude (Anthropic), October 2026.
+
+**What the AI produced:** a first draft of the Python package under `src/oews_pipeline/` (extract, transform, validation, load, quality report, re-run check, CLI), the synthetic-sample generator, the pytest suite, and first drafts of `docs/ERD.md`, `docs/DATA_DICTIONARY.md`, `docs/DATA_ACCESS.md`, and `docs/PIPELINE.md`. These were built from the research design in my A3 proposal.
+
+**What is mine:** the research question, unit of analysis, data sources, exposure definition, pre/post timing, focal-occupation contrast, and robustness plan, all carried over from A3. I chose the schema grain and approved the rules for handling bad records. I reviewed each module, ran the pipeline, re-run check, and tests locally, and checked the quality report.
+
+**Verification:** I ran `uv run oews-pipeline run`, `uv run oews-pipeline rerun-check`, and `uv run pytest -q` locally and reviewed the generated `QUALITY_REPORT.md` and `RERUN_CHECK.md`.
+
 ---
 
-_Update this file as AI assistance is used in future assignments — add a
+_Update this file as AI assistance is used in future assignments - add a
 new dated entry rather than overwriting prior entries._
