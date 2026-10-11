@@ -1,0 +1,21 @@
+O*NET-SOC Code	Title	Job Zone	Date	Domain Source
+13-2051.00	Financial and Investment Analysts	4	08/2022	Analyst
+43-3031.00	Bookkeeping, Accounting, and Auditing Clerks	3	08/2022	Analyst
+13-2011.00	Accountants and Auditors	4	08/2022	Analyst
+13-2041.00	Credit Analysts	4	08/2022	Analyst
+13-2052.00	Personal Financial Advisors	4	08/2022	Analyst
+11-3031.00	Financial Managers	4	08/2022	Analyst
+41-3031.00	Securities, Commodities, and Financial Services Sales Agents	4	08/2022	Analyst
+43-3071.00	Tellers	2	08/2022	Analyst
+43-4051.00	Customer Service Representatives	2	08/2022	Analyst
+43-9021.00	Data Entry Keyers	2	08/2022	Analyst
+43-6014.00	Secretaries and Administrative Assistants, Except Legal, Medical, and Executive	2	08/2022	Analyst
+15-1252.00	Software Developers	4	08/2022	Analyst
+15-2031.00	Operations Research Analysts	5	08/2022	Analyst
+15-2041.00	Statisticians	5	08/2022	Analyst
+13-1111.00	Management Analysts	4	08/2022	Analyst
+23-2011.00	Paralegals and Legal Assistants	3	08/2022	Analyst
+29-1141.00	Registered Nurses	3	08/2022	Analyst
+53-7062.00	Laborers and Freight, Stock, and Material Movers, Hand	1	08/2022	Analyst
+47-2061.00	Construction Laborers	2	08/2022	Analyst
+35-2014.00	Cooks, Restaurant	2	08/2022	Analyst

@@ -1,0 +1,26 @@
+O*NET-SOC Code,Title,dv_rating_alpha,dv_rating_beta,dv_rating_gamma,human_rating_alpha,human_rating_beta,human_rating_gamma
+13-2051.00,Financial and Investment Analysts,0.369,0.5945,0.82,0.3505,0.5648,0.779
+13-2051.01,Financial and Investment Analysts,0.387,0.6235,0.86,0.3676,0.5923,0.817
+43-3031.00,"Bookkeeping, Accounting, and Auditing Clerks",0.405,0.6525,0.9,0.3847,0.6199,0.855
+13-2011.00,Accountants and Auditors,0.351,0.5655,0.78,0.3334,0.5372,0.741
+13-2041.00,Credit Analysts,0.36,0.58,0.8,0.342,0.551,0.76
+13-2052.00,Personal Financial Advisors,0.279,0.4495,0.62,0.2651,0.427,0.589
+11-3031.00,Financial Managers,0.2475,0.3988,0.55,0.2351,0.3789,0.5225
+41-3031.00,"Securities, Commodities, and Financial Services Sales Agents",0.261,0.4205,0.58,0.248,0.3995,0.551
+43-3071.00,Tellers,0.27,0.435,0.6,0.2565,0.4133,0.57
+43-4051.00,Customer Service Representatives,0.324,0.522,0.72,0.3078,0.4959,0.684
+43-4051.01,Customer Service Representatives,0.342,0.551,0.76,0.3249,0.5234,0.722
+43-9021.00,Data Entry Keyers,0.4275,0.6887,0.95,0.4061,0.6543,0.9025
+43-6014.00,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",0.333,0.5365,0.74,0.3164,0.5097,0.703
+15-1252.00,Software Developers,0.396,0.638,0.88,0.3762,0.6061,0.836
+15-1252.01,Software Developers,0.414,0.667,0.92,0.3933,0.6337,0.874
+15-2031.00,Operations Research Analysts,0.3555,0.5727,0.79,0.3377,0.5441,0.7505
+15-2041.00,Statisticians,0.315,0.5075,0.7,0.2992,0.4821,0.665
+13-1111.00,Management Analysts,0.297,0.4785,0.66,0.2821,0.4546,0.627
+23-2011.00,Paralegals and Legal Assistants,0.3465,0.5583,0.77,0.3292,0.5304,0.7315
+29-1141.00,Registered Nurses,0.135,0.2175,0.3,0.1283,0.2066,0.285
+53-7062.00,"Laborers and Freight, Stock, and Material Movers, Hand",0.027,0.0435,0.06,0.0256,0.0413,0.057
+35-2014.00,"Cooks, Restaurant",0.0225,0.0363,0.05,0.0214,0.0345,0.0475
+19-1029.01,Bioinformatics Scientists,0.3,0.5,0.7,0.3,0.5,0.7
+13-2099.01,Financial Quantitative Analysts,0.5,0.8,1.3,0.5,0.8,1.0
+132061,Financial Examiners,0.4,0.6,0.8,0.4,0.6,0.8

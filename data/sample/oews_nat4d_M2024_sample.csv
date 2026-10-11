@@ -1,0 +1,152 @@
+area,area_title,area_type,prim_state,naics,naics_title,i_group,own_code,occ_code,occ_title,o_group,tot_emp,emp_prse,pct_total,h_mean,a_mean,mean_prse
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,13-2051,Financial and Investment Analysts,detailed,1647,16.4,0.44,52.30,108780,3.2
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,43-3031,"Bookkeeping, Accounting, and Auditing Clerks",detailed,"4,100",3.3,6.98,21.61,44940,2.8
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,132051,Financial Managers,detailed,210,10.7,1.17,88.82,184750,2.5
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,41-3031,"Securities, Commodities, and Financial Services Sales Agents",detailed,10961,16.6,1.97,55.46,115360,2.6
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,43-4051,Customer Service Representatives,detailed,960,11.9,5.06,22.09,45950,1.7
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,43-9021,Data Entry Keyers,detailed,"3,781",13.0,6.59,21.47,44650,4.9
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,15-1252,Software Developers,detailed,3319,15.0,8.31,70.45,146530,1.2
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,15-2031,Operations Research Analysts,detailed,1775,6.9,0.96,52.49,109180,3.5
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,15-2041,Statisticians,detailed,569,19.4,6.00,58.30,121260,5.2
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,23-2011,Paralegals and Legal Assistants,detailed,2449,5.4,4.18,32.83,68290,0.8
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,29-1141,Registered Nurses,detailed,775,14.3,3.83,49.40,102760,5.0
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,10498,5.1,5.49,19.75,41070,5.8
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,47-2061,Construction Laborers,detailed,"3,581",21.7,3.70,24.61,51180,1.2
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,00-0000,All Occupations,total,44625,1.0,100.00,30.00,62400,0.8
+99,U.S.,1,US,522100,Depository Credit Intermediation,4-digit,1235,13-0000,Business and Financial Operations Occupations,major,5000,2.0,10.00,40.00,83200,1.0
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,13-2051,Financial and Investment Analysts,detailed,7626,10.8,7.02,66.65,138640,4.2
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,43-3031,"Bookkeeping, Accounting, and Auditing Clerks",detailed,618,11.4,7.16,33.34,69340,1.9
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,13-2011,Accountants and Auditors,detailed,1510,6.3,6.06,57.37,119330,1.0
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,11-3031,Financial Managers,detailed,1521,3.0,4.35,108.59,225860,3.8
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,41-3031,"Securities, Commodities, and Financial Services Sales Agents",detailed,506,21.4,8.45,75.83,157720,1.2
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,43-4051,Customer Service Representatives,detailed,**,10.1,1.41,27.45,57100,4.5
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,43-9021,Data Entry Keyers,detailed,678,17.9,0.31,25.85,53760,0.9
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,43-6014,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",detailed,3253,14.6,3.98,29.14,60610,1.4
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,15-1252,Software Developers,detailed,1076,14.1,3.25,88.57,184230,1.7
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,15-2031,Operations Research Analysts,detailed,2150,25.0,4.88,68.41,142290,1.6
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,15-2041,Statisticians,detailed,"1,529",24.2,0.28,64.69,134560,5.1
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,13-1111,Management Analysts,detailed,550,21.0,4.40,72.66,151140,5.7
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,23-2011,Paralegals and Legal Assistants,detailed,2651,15.5,5.55,41.43,86170,0.8
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,29-1141,Registered Nurses,detailed,1142,21.4,0.45,59.12,122980,5.5
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,23611,10.1,5.04,26.16,54410,2.7
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,47-2061,Construction Laborers,detailed,958,18.6,7.39,31.62,65780,4.5
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,00-0000,All Occupations,total,49936,1.0,100.00,30.00,62400,0.8
+99,U.S.,1,US,523100,Securities and Commodity Contracts Intermediation and Brokerage,4-digit,1235,13-0000,Business and Financial Operations Occupations,major,5000,2.0,10.00,40.00,83200,1.0
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,13-2051,Financial and Investment Analysts,detailed,**,5.8,7.56,66.71,138750,5.8
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,13-2011,Accountants and Auditors,detailed,**,10.6,8.94,55.92,116310,3.5
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,11-3031,Financial Managers,detailed,8060,17.7,8.98,#,#,5.6
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,41-3031,"Securities, Commodities, and Financial Services Sales Agents",detailed,1096,10.4,8.58,69.28,144110,5.7
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,43-4051,Customer Service Representatives,detailed,2696,13.4,0.80,28.55,59390,2.9
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,43-9021,Data Entry Keyers,detailed,666,4.6,0.22,25.03,52070,5.1
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,43-6014,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",detailed,293,10.3,8.00,28.54,59360,4.0
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,15-1252,Software Developers,detailed,788,6.2,7.61,90.06,187320,4.6
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,13-1111,Management Analysts,detailed,**,4.2,4.06,70.63,146910,5.3
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,29-1141,Registered Nurses,detailed,1873,24.8,0.97,55.65,115760,1.7
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,1917,11.9,8.70,22.16,46090,4.0
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,00-0000,All Occupations,total,20725,1.0,100.00,30.00,62400,0.8
+99,U.S.,1,US,523900,Other Financial Investment Activities,4-digit,1235,13-0000,Business and Financial Operations Occupations,major,5000,2.0,10.00,40.00,83200,1.0
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,43-3031,"Bookkeeping, Accounting, and Auditing Clerks",detailed,6622,17.0,7.57,25.77,53600,1.0
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,13-2011,Accountants and Auditors,detailed,"1,256",10.4,1.90,43.93,91380,4.5
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,13-2041,Credit Analysts,detailed,1917,12.4,8.49,49.43,102820,4.8
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,13-2052,Personal Financial Advisors,detailed,585,20.5,6.81,64.61,134390,3.9
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,11-3031,Financial Managers,detailed,309,16.6,7.58,91.12,189520,5.1
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,43-3071,Tellers,detailed,3320,9.6,7.10,19.57,40700,3.8
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,43-4051,Customer Service Representatives,detailed,"6,031",9.7,7.06,21.88,45500,1.7
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,43-6014,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",detailed,1910,6.8,4.85,22.39,46570,5.3
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,15-1252,Software Developers,detailed,**,13.5,6.27,69.65,144880,3.5
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,15-2041,Statisticians,detailed,599,8.3,4.15,54.31,112960,3.2
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,13-1111,Management Analysts,detailed,325,8.5,2.60,53.16,110580,4.5
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,23-2011,Paralegals and Legal Assistants,detailed,1031,7.6,2.22,31.17,64830,5.5
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,29-1141,Registered Nurses,detailed,**,8.3,8.92,47.34,98460,2.0
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,35-2014,"Cooks, Restaurant",detailed,3947,1.6,6.09,18.72,38930,1.1
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,00-0000,All Occupations,total,29580,1.0,100.00,30.00,62400,0.8
+99,U.S.,1,US,524100,Insurance Carriers,4-digit,1235,13-0000,Business and Financial Operations Occupations,major,5000,2.0,10.00,40.00,83200,1.0
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,13-2051,Financial and Investment Analysts,detailed,777,20.2,1.39,53.48,111230,2.8
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,43-3031,"Bookkeeping, Accounting, and Auditing Clerks",detailed,610,12.1,0.57,*,*,1.3
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,13-2011,Accountants and Auditors,detailed,**,7.1,8.75,47.39,98580,3.5
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,11-3031,Financial Managers,detailed,1291,22.7,7.66,87.43,181860,5.0
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,41-3031,"Securities, Commodities, and Financial Services Sales Agents",detailed,"1,933",16.2,2.11,58.62,121930,1.1
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,43-3071,Tellers,detailed,"1,191",18.2,3.31,*,*,3.3
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,15-2031,Operations Research Analysts,detailed,317,11.4,7.24,51.41,106930,0.6
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,13-1111,Management Analysts,detailed,1024,5.9,3.42,57.51,119620,4.1
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,23-2011,Paralegals and Legal Assistants,detailed,1258,8.3,1.19,31.71,65960,0.7
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,29-1141,Registered Nurses,detailed,1991,20.4,5.02,48.03,99910,5.8
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,802,20.5,3.19,19.45,40450,1.9
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,47-2061,Construction Laborers,detailed,1051,9.6,3.14,25.71,53470,1.9
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,00-0000,All Occupations,total,13805,1.0,100.00,30.00,62400,0.8
+99,U.S.,1,US,541200,"Accounting, Tax Preparation, Bookkeeping, and Payroll Services",4-digit,1235,13-0000,Business and Financial Operations Occupations,major,5000,2.0,10.00,40.00,83200,1.0
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,13-2041,Credit Analysts,detailed,"3,768",6.0,7.34,46.89,97540,5.7
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,13-2052,Personal Financial Advisors,detailed,"1,018",12.9,4.15,61.65,128230,5.1
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,11-3031,Financial Managers,detailed,603,20.7,1.07,88.30,183670,6.0
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,43-4051,Customer Service Representatives,detailed,8973,17.6,7.02,21.87,45490,3.5
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,43-9021,Data Entry Keyers,detailed,3446,6.8,6.75,*,*,1.4
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,43-6014,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",detailed,827,17.6,0.93,23.07,47980,1.7
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,15-2041,Statisticians,detailed,5549,24.0,8.22,52.67,109550,4.3
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,13-1111,Management Analysts,detailed,248,17.5,5.99,55.79,116040,3.6
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,23-2011,Paralegals and Legal Assistants,detailed,930,18.4,1.95,34.55,71860,3.7
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,29-1141,Registered Nurses,detailed,12864,19.4,1.26,50.91,105890,3.2
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,"8,935",10.6,1.63,20.10,41800,3.3
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,00-0000,All Occupations,total,47161,1.0,100.00,30.00,62400,0.8
+99,U.S.,1,US,541500,Computer Systems Design and Related Services,4-digit,1235,13-0000,Business and Financial Operations Occupations,major,5000,2.0,10.00,40.00,83200,1.0
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,13-2051,Financial and Investment Analysts,detailed,650,19.7,7.42,52.21,108600,3.2
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,13-2011,Accountants and Auditors,detailed,**,19.4,5.62,45.68,95010,0.6
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,13-2041,Credit Analysts,detailed,"4,383",8.9,8.51,51.21,106520,4.3
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,41-3031,"Securities, Commodities, and Financial Services Sales Agents",detailed,6335,4.9,1.32,59.51,123790,3.6
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,43-4051,Customer Service Representatives,detailed,2184,11.6,5.10,21.50,44730,3.1
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,43-9021,Data Entry Keyers,detailed,983,7.5,5.82,20.60,42840,1.3
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,43-6014,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",detailed,8548,1.5,6.41,21.63,44990,2.4
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,15-2031,Operations Research Analysts,detailed,"1,898",5.8,3.58,50.39,104810,4.1
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,13-1111,Management Analysts,detailed,"1,142",18.5,4.59,51.99,108130,1.4
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,23-2011,Paralegals and Legal Assistants,detailed,607,10.5,1.92,32.49,67580,3.2
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,29-1141,Registered Nurses,detailed,1222,20.4,2.26,45.41,94450,3.4
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,245,16.2,1.93,21.86,45470,4.9
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,35-2014,"Cooks, Restaurant",detailed,3834,1.9,0.77,18.28,38030,3.1
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,00-0000,All Occupations,total,34007,1.0,100.00,30.00,62400,0.8
+99,U.S.,1,US,551100,Management of Companies and Enterprises,4-digit,1235,13-0000,Business and Financial Operations Occupations,major,5000,2.0,10.00,40.00,83200,1.0
+99,U.S.,1,US,622100,General Medical and Surgical Hospitals,4-digit,1235,13-2051,Financial and Investment Analysts,detailed,619,9.0,3.29,50.42,104880,3.5
+99,U.S.,1,US,622100,General Medical and Surgical Hospitals,4-digit,1235,13-2011,Accountants and Auditors,detailed,"2,807",17.7,4.01,45.26,94140,1.0
+99,U.S.,1,US,622100,General Medical and Surgical Hospitals,4-digit,1235,11-3031,Financial Managers,detailed,5870,16.7,1.77,90.94,189160,4.7
+99,U.S.,1,US,622100,General Medical and Surgical Hospitals,4-digit,1235,43-4051,Customer Service Representatives,detailed,711,10.2,6.79,22.08,45930,5.3
+99,U.S.,1,US,622100,General Medical and Surgical Hospitals,4-digit,1235,43-9021,Data Entry Keyers,detailed,749,9.6,8.89,20.76,43180,1.3
+99,U.S.,1,US,622100,General Medical and Surgical Hospitals,4-digit,1235,15-1252,Software Developers,detailed,626,8.6,5.85,69.87,145330,5.6
+99,U.S.,1,US,622100,General Medical and Surgical Hospitals,4-digit,1235,15-2031,Operations Research Analysts,detailed,"4,033",19.2,5.96,48.09,100030,0.6
+99,U.S.,1,US,622100,General Medical and Surgical Hospitals,4-digit,1235,15-2041,Statisticians,detailed,**,24.8,4.45,53.37,111000,4.0
+99,U.S.,1,US,622100,General Medical and Surgical Hospitals,4-digit,1235,13-1111,Management Analysts,detailed,"3,604",23.6,6.20,56.19,116870,0.7
+99,U.S.,1,US,622100,General Medical and Surgical Hospitals,4-digit,1235,47-2061,Construction Laborers,detailed,**,23.6,7.83,25.32,52670,2.9
+99,U.S.,1,US,622100,General Medical and Surgical Hospitals,4-digit,1235,00-0000,All Occupations,total,51633,1.0,100.00,30.00,62400,0.8
+99,U.S.,1,US,622100,General Medical and Surgical Hospitals,4-digit,1235,13-0000,Business and Financial Operations Occupations,major,5000,2.0,10.00,40.00,83200,1.0
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,43-3031,"Bookkeeping, Accounting, and Auditing Clerks",detailed,1235,4.0,8.43,24.51,50990,1.8
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,13-2011,Accountants and Auditors,detailed,19501,10.3,2.11,43.78,91060,5.5
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,13-2041,Credit Analysts,detailed,1295,11.3,7.80,48.44,100750,2.0
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,13-2052,Personal Financial Advisors,detailed,"1,821",17.8,1.75,61.90,128760,3.5
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,41-3031,"Securities, Commodities, and Financial Services Sales Agents",detailed,"4,193",18.2,3.53,59.26,123260,2.0
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,43-3071,Tellers,detailed,1286,8.5,2.89,18.71,38920,1.1
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,43-4051,Customer Service Representatives,detailed,3484,10.8,5.69,21.60,44920,3.2
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,43-9021,Data Entry Keyers,detailed,**,22.5,8.11,21.83,45400,5.5
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,43-6014,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",detailed,1416,11.5,5.86,24.77,51520,2.0
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,15-2031,Operations Research Analysts,detailed,**,11.9,0.30,48.54,100970,2.4
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,13-1111,Management Analysts,detailed,494,18.5,1.59,57.42,119440,4.1
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,29-1141,Registered Nurses,detailed,473,7.8,8.74,47.01,97790,0.5
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,626,11.8,7.28,20.38,42390,4.2
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,47-2061,Construction Laborers,detailed,6684,18.2,1.51,24.52,51000,4.4
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,00-0000,All Occupations,total,44421,1.0,100.00,30.00,62400,0.8
+99,U.S.,1,US,493100,Warehousing and Storage,4-digit,1235,13-0000,Business and Financial Operations Occupations,major,5000,2.0,10.00,40.00,83200,1.0
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,13-2051,Financial and Investment Analysts,detailed,1219,2.0,2.13,53.01,110260,3.3
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,43-3031,"Bookkeeping, Accounting, and Auditing Clerks",detailed,1382,19.3,0.51,23.64,49170,2.5
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,13-2011,Accountants and Auditors,detailed,2731,15.5,1.87,43.34,90150,3.7
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,13-2041,Credit Analysts,detailed,779,7.1,1.95,47.48,98760,2.0
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,13-2052,Personal Financial Advisors,detailed,300,10.9,6.34,67.04,139450,3.1
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,11-3031,Financial Managers,detailed,4155,20.0,1.81,90.13,187480,5.4
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,41-3031,"Securities, Commodities, and Financial Services Sales Agents",detailed,941,19.6,7.61,53.05,110350,0.7
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,43-3071,Tellers,detailed,768,21.8,8.08,20.59,42820,0.6
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,43-4051,Customer Service Representatives,detailed,6012,7.3,2.49,22.40,46600,1.3
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,43-9021,Data Entry Keyers,detailed,789,5.2,7.03,20.07,41750,3.7
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,15-1252,Software Developers,detailed,"3,224",9.1,7.85,71.86,149470,4.8
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,15-2031,Operations Research Analysts,detailed,1066,20.4,2.47,49.38,102700,4.1
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,15-2041,Statisticians,detailed,300,13.2,1.20,52.36,108900,4.1
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,13-1111,Management Analysts,detailed,"9,285",3.3,3.63,52.77,109760,4.4
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",detailed,691,13.4,5.32,19.05,39620,3.9
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,47-2061,Construction Laborers,detailed,"7,442",7.6,7.37,24.17,50280,5.6
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,00-0000,All Occupations,total,41084,1.0,100.00,30.00,62400,0.8
+99,U.S.,1,US,722500,Restaurants and Other Eating Places,4-digit,1235,13-0000,Business and Financial Operations Occupations,major,5000,2.0,10.00,40.00,83200,1.0
+99,U.S.,1,US,522000,Credit Intermediation and Related Activities,3-digit,1235,13-2051,Financial and Investment Analysts,detailed,21000,3.0,1.2,50.00,104000,1.5
