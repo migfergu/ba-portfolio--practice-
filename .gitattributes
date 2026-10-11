@@ -1,0 +1,3 @@
+# Keep the synthetic sample byte-identical on every OS (a test compares it to the generator)
+data/sample/*.csv -text
+data/sample/*.txt -text

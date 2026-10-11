@@ -1,0 +1,44 @@
+# Source manifest. The pipeline reads ONLY the files named here.
+# `sample` = synthetic files committed in data/sample/ (safe to share).
+# `raw`    = real files an authorized user downloads into data/raw/ (never committed).
+# See docs/DATA_ACCESS.md for download steps and expected checksums.
+
+[study]
+years = [2021, 2022, 2023, 2024, 2025]   # May reference years
+post_start_year = 2023                     # ChatGPT released Nov 2022 -> May 2023 is first post period
+delayed_post_start_year = 2024             # robustness: delayed post
+industry_level = "4-digit"                 # OEWS I_GROUP kept in the panel
+occupation_level = "detailed"              # OEWS O_GROUP kept in the panel
+exposure_measure = "dv_rating_gamma"       # E1+E2 = "directly or with complementary software" (matches A3 proposal); alpha/beta also stored
+focal_occupations = { "13-2051" = "analyst", "43-3031" = "clerk_contrast" }
+
+[sample.oews]
+2021 = "oews_nat4d_M2021_sample.csv"
+2022 = "oews_nat4d_M2022_sample.csv"
+2023 = "oews_nat4d_M2023_sample.csv"
+2024 = "oews_nat4d_M2024_sample.csv"
+2025 = "oews_nat4d_M2025_sample.csv"
+
+[sample.exposure]
+file = "eloundou_occ_level_sample.csv"
+version = "synthetic sample mirroring openai/GPTs-are-GPTs occ_level.csv layout"
+
+[sample.job_zones]
+file = "onet_job_zones_sample.txt"
+version = "synthetic sample mirroring O*NET 27.0 Job Zones.txt layout"
+
+# ---- Real data (authorized user places these files in data/raw/) ----
+[raw.oews]
+2021 = "nat4d_M2021_dl.xlsx"
+2022 = "nat4d_M2022_dl.xlsx"
+2023 = "nat4d_M2023_dl.xlsx"
+2024 = "nat4d_M2024_dl.xlsx"
+2025 = "nat4d_M2025_dl.xlsx"
+
+[raw.exposure]
+file = "occ_level.csv"
+version = "Eloundou, Manning, Mishkin & Rock (2024), Science; openai/GPTs-are-GPTs data/occ_level.csv"
+
+[raw.job_zones]
+file = "Job Zones.txt"
+version = "O*NET 27.0 (Aug 2022) - fixed pre-ChatGPT release"
