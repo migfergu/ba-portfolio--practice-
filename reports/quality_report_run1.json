@@ -1,0 +1,327 @@
+{
+  "run_id": 1,
+  "source_mode": "sample",
+  "started_at": "2026-10-11T05:33:24+00:00",
+  "status": "succeeded",
+  "source_files": [
+    {
+      "source_name": "exposure",
+      "file_name": "eloundou_occ_level_sample.csv",
+      "sha256_12": "88491485e462",
+      "size_bytes": 2067,
+      "rows_read": 25
+    },
+    {
+      "source_name": "job_zones",
+      "file_name": "onet_job_zones_sample.txt",
+      "sha256_12": "d89461327eb9",
+      "size_bytes": 1245,
+      "rows_read": 20
+    },
+    {
+      "source_name": "oews_2021",
+      "file_name": "oews_nat4d_M2021_sample.csv",
+      "sha256_12": "a95e408abd0d",
+      "size_bytes": 23211,
+      "rows_read": 151
+    },
+    {
+      "source_name": "oews_2022",
+      "file_name": "oews_nat4d_M2022_sample.csv",
+      "sha256_12": "689014baac2b",
+      "size_bytes": 23394,
+      "rows_read": 152
+    },
+    {
+      "source_name": "oews_2023",
+      "file_name": "oews_nat4d_M2023_sample.csv",
+      "sha256_12": "e23c3600aacc",
+      "size_bytes": 23316,
+      "rows_read": 152
+    },
+    {
+      "source_name": "oews_2024",
+      "file_name": "oews_nat4d_M2024_sample.csv",
+      "sha256_12": "d7bc33a30a65",
+      "size_bytes": 23245,
+      "rows_read": 151
+    },
+    {
+      "source_name": "oews_2025",
+      "file_name": "oews_nat4d_M2025_sample.csv",
+      "sha256_12": "435a862f3321",
+      "size_bytes": 23227,
+      "rows_read": 151
+    }
+  ],
+  "row_reconciliation": [
+    {
+      "source": "oews_2021",
+      "rows_read": 151,
+      "out_of_scope_filtered": 21,
+      "rejected": 1,
+      "valid": 129,
+      "reconciles": true
+    },
+    {
+      "source": "oews_2022",
+      "rows_read": 152,
+      "out_of_scope_filtered": 21,
+      "rejected": 1,
+      "valid": 130,
+      "reconciles": true
+    },
+    {
+      "source": "oews_2023",
+      "rows_read": 152,
+      "out_of_scope_filtered": 21,
+      "rejected": 3,
+      "valid": 128,
+      "reconciles": true
+    },
+    {
+      "source": "oews_2024",
+      "rows_read": 151,
+      "out_of_scope_filtered": 21,
+      "rejected": 1,
+      "valid": 129,
+      "reconciles": true
+    },
+    {
+      "source": "oews_2025",
+      "rows_read": 151,
+      "out_of_scope_filtered": 21,
+      "rejected": 1,
+      "valid": 129,
+      "reconciles": true
+    },
+    {
+      "source": "exposure",
+      "rows_read": 25,
+      "out_of_scope_filtered": 0,
+      "rejected": 2,
+      "valid": 23,
+      "reconciles": true
+    },
+    {
+      "source": "job_zones",
+      "rows_read": 20,
+      "out_of_scope_filtered": 0,
+      "rejected": 0,
+      "valid": 20,
+      "reconciles": true
+    }
+  ],
+  "rejected_by_reason": [
+    {
+      "source_name": "exposure",
+      "reason_code": "INVALID_ONET",
+      "n": 1,
+      "action_taken": "Rejected: O*NET-SOC code not in 'NN-NNNN.NN' form."
+    },
+    {
+      "source_name": "exposure",
+      "reason_code": "RANGE",
+      "n": 1,
+      "action_taken": "Rejected: value outside its valid range (e.g., negative employment, rating > 1)."
+    },
+    {
+      "source_name": "oews_2021",
+      "reason_code": "NON_NUMERIC",
+      "n": 1,
+      "action_taken": "Rejected: numeric field held a value that is neither a number nor a documented BLS symbol."
+    },
+    {
+      "source_name": "oews_2022",
+      "reason_code": "DUPLICATE_EXACT",
+      "n": 1,
+      "action_taken": "Extra identical copy quarantined; one copy kept."
+    },
+    {
+      "source_name": "oews_2023",
+      "reason_code": "DUPLICATE_CONFLICT",
+      "n": 2,
+      "action_taken": "All copies quarantined: same key, different values (cannot pick a truth)."
+    },
+    {
+      "source_name": "oews_2023",
+      "reason_code": "MISSING_REQUIRED",
+      "n": 1,
+      "action_taken": "Rejected: required identifier or title is blank."
+    },
+    {
+      "source_name": "oews_2024",
+      "reason_code": "INVALID_SOC",
+      "n": 1,
+      "action_taken": "Rejected: OCC_CODE not in SOC 'NN-NNNN' form; row quarantined."
+    },
+    {
+      "source_name": "oews_2025",
+      "reason_code": "RANGE",
+      "n": 1,
+      "action_taken": "Rejected: value outside its valid range (e.g., negative employment, rating > 1)."
+    }
+  ],
+  "rejected_total": 9,
+  "duplicates": {
+    "source_exact_duplicates_quarantined": 1,
+    "source_conflicting_duplicates_quarantined": 2,
+    "database_duplicate_fact_keys": 0
+  },
+  "missingness_fact_by_year": [
+    {
+      "year": 2021,
+      "rows": 129,
+      "tot_emp_pct_null": 10.08,
+      "emp_prse_pct_null": 0.0,
+      "a_mean_pct_null": 3.88,
+      "h_mean_pct_null": 3.88,
+      "mean_prse_pct_null": 0.0,
+      "emp_suppressed": 13,
+      "wage_suppressed": 5,
+      "wage_topcoded": 0
+    },
+    {
+      "year": 2022,
+      "rows": 130,
+      "tot_emp_pct_null": 6.15,
+      "emp_prse_pct_null": 0.0,
+      "a_mean_pct_null": 0.0,
+      "h_mean_pct_null": 0.0,
+      "mean_prse_pct_null": 0.0,
+      "emp_suppressed": 8,
+      "wage_suppressed": 0,
+      "wage_topcoded": 0
+    },
+    {
+      "year": 2023,
+      "rows": 128,
+      "tot_emp_pct_null": 7.03,
+      "emp_prse_pct_null": 0.0,
+      "a_mean_pct_null": 1.56,
+      "h_mean_pct_null": 1.56,
+      "mean_prse_pct_null": 0.0,
+      "emp_suppressed": 9,
+      "wage_suppressed": 2,
+      "wage_topcoded": 0
+    },
+    {
+      "year": 2024,
+      "rows": 129,
+      "tot_emp_pct_null": 9.3,
+      "emp_prse_pct_null": 0.0,
+      "a_mean_pct_null": 3.1,
+      "h_mean_pct_null": 3.1,
+      "mean_prse_pct_null": 0.0,
+      "emp_suppressed": 12,
+      "wage_suppressed": 3,
+      "wage_topcoded": 1
+    },
+    {
+      "year": 2025,
+      "rows": 129,
+      "tot_emp_pct_null": 4.65,
+      "emp_prse_pct_null": 0.0,
+      "a_mean_pct_null": 4.65,
+      "h_mean_pct_null": 4.65,
+      "mean_prse_pct_null": 0.0,
+      "emp_suppressed": 6,
+      "wage_suppressed": 5,
+      "wage_topcoded": 1
+    }
+  ],
+  "missingness_dimensions": {
+    "occupations_without_exposure": 1,
+    "occupations_without_job_zone": 0
+  },
+  "load_outcome": {
+    "inserted": 645,
+    "updated": 0,
+    "unchanged": 0,
+    "stale_keys_not_in_source": 0
+  },
+  "coverage_by_year": [
+    {
+      "year": 2021,
+      "cells": 129,
+      "emp_published": 116,
+      "wage_published": 124,
+      "exposure_matched": 123,
+      "emp_model_ready": 111,
+      "wage_model_ready": 118
+    },
+    {
+      "year": 2022,
+      "cells": 130,
+      "emp_published": 122,
+      "wage_published": 130,
+      "exposure_matched": 124,
+      "emp_model_ready": 117,
+      "wage_model_ready": 124
+    },
+    {
+      "year": 2023,
+      "cells": 128,
+      "emp_published": 119,
+      "wage_published": 126,
+      "exposure_matched": 122,
+      "emp_model_ready": 115,
+      "wage_model_ready": 120
+    },
+    {
+      "year": 2024,
+      "cells": 129,
+      "emp_published": 117,
+      "wage_published": 125,
+      "exposure_matched": 123,
+      "emp_model_ready": 112,
+      "wage_model_ready": 119
+    },
+    {
+      "year": 2025,
+      "cells": 129,
+      "emp_published": 123,
+      "wage_published": 123,
+      "exposure_matched": 123,
+      "emp_model_ready": 117,
+      "wage_model_ready": 117
+    }
+  ],
+  "balanced_emp_cells": 87,
+  "focal_occupation_cells": [
+    {
+      "focal_role": "analyst",
+      "soc_code": "13-2051",
+      "industries": 7,
+      "emp_model_ready_cells": 32
+    },
+    {
+      "focal_role": "clerk_contrast",
+      "soc_code": "43-3031",
+      "industries": 6,
+      "emp_model_ready_cells": 27
+    }
+  ],
+  "foreign_key_violations": 0,
+  "table_counts": {
+    "dim_occupation": 20,
+    "dim_industry": 10,
+    "dim_year": 5,
+    "occupation_exposure": 19,
+    "occupation_preparation": 20,
+    "fact_oews_estimate": 645,
+    "etl_run": 1,
+    "source_file_log": 7,
+    "rejected_record": 9
+  },
+  "exposure_merge": {
+    "rows_read": 25,
+    "rejected_RANGE": 1,
+    "rejected_INVALID_ONET": 1,
+    "rows_valid": 23,
+    "socs_after_aggregation": 20,
+    "socs_not_in_oews_panel": 1,
+    "panel_socs_without_exposure": 1,
+    "socs_loaded": 19
+  }
+}

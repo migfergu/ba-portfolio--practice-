@@ -1,4 +1,4 @@
-﻿# Business Analytics Portfolio
+# Business Analytics Portfolio
 
 Portfolio repository for business analytics coursework, built around financial
 modeling, forecasting, budgeting/variance analysis, and data-driven decision
@@ -129,3 +129,29 @@ used in this repository. It is kept current as the project evolves.
 
 Miguel L. Ferguson II â€” PhD student, Business Analytics, University of South
 Alabama; finance and business analytics professional.
+## Assignment 4: Database & Data Pipeline
+
+Builds a SQLite database for **Generative AI Exposure and Financial Analyst Employment and Wages** from BLS OEWS, Eloundou et al. (2024) exposure scores, and O*NET Job Zones.
+
+### Setup (about 2 minutes)
+
+Requires [uv](https://docs.astral.sh/uv/) and Git. Python is installed by uv automatically.
+
+```powershell
+git clone https://github.com/migfergu/migfergu-ba-portfolio-practice.git
+cd migfergu-ba-portfolio-practice
+uv sync                           # install dependencies from uv.lock
+uv run oews-pipeline run          # build data/processed/oews_genai.db from the synthetic sample
+uv run oews-pipeline rerun-check  # run twice, prove no duplicates -> docs/RERUN_CHECK.md
+uv run pytest -q                  # 8 tests
+```
+
+Using the real data instead of the sample: see [docs/DATA_ACCESS.md](docs/DATA_ACCESS.md), then run `uv run oews-pipeline run --source raw`.
+
+### Documentation
+
+- [Pipeline architecture & commands](docs/PIPELINE.md)
+- [ERD & indexing strategy](docs/ERD.md)
+- [Data dictionary](docs/DATA_DICTIONARY.md)
+- [Quality report](docs/QUALITY_REPORT.md) and [re-runnability check](docs/RERUN_CHECK.md)
+- [Rubric evidence map](docs/A4_EVIDENCE_MAP.md)
