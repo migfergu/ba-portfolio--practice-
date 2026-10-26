@@ -1,0 +1,21 @@
+soc_code,occ_title,focal_role,exposure_main,exposure_z,job_zone_mean,exposure_group,exposure_tercile,pre_emp_total,pre_mean_wage,n_industries
+43-9021,Data Entry Keyers,,0.95,1.1697901393798347,2.0,High,High,11449.0,42441.333333333336,8
+15-1252,Software Developers,,0.9,0.9755068120352819,4.0,High,High,7651.5,145721.81818181818,6
+43-3031,"Bookkeeping, Accounting, and Auditing Clerks",clerk_contrast,0.9,0.9755068120352819,3.0,High,High,10950.0,49570.833333333336,6
+13-2051,Financial and Investment Analysts,analyst,0.84,0.742366819221818,4.0,High,High,12039.5,109049.28571428571,7
+13-2041,Credit Analysts,,0.8,0.5869401573461759,4.0,High,High,11742.0,89564.0,5
+15-2031,Operations Research Analysts,,0.79,0.5480834918772652,5.0,High,High,11706.5,100215.0,7
+13-2011,Accountants and Auditors,,0.78,0.5092268264083546,4.0,High,Middle,30865.5,91361.875,8
+23-2011,Paralegals and Legal Assistants,,0.77,0.47037016093944395,3.0,High,Middle,8514.0,66310.0,6
+43-4051,Customer Service Representatives,,0.74,0.353800164532712,2.0,Low,Middle,30802.5,44503.333333333336,9
+43-6014,"Secretaries and Administrative Assistants, Except Legal, Medical, and Executive",,0.74,0.353800164532712,2.0,Low,Middle,15508.0,47191.818181818184,6
+15-2041,Statisticians,,0.7,0.19837350265706943,5.0,Low,Middle,12727.0,110465.83333333333,6
+13-1111,Management Analysts,,0.66,0.042946840781427305,4.0,Low,Middle,17427.5,113234.70588235294,9
+13-2052,Personal Financial Advisors,,0.62,-0.11247982109421527,4.0,Low,Low,2971.5,119940.0,4
+43-3071,Tellers,,0.6,-0.19019315203203654,2.0,Low,Low,6151.5,38497.5,4
+41-3031,"Securities, Commodities, and Financial Services Sales Agents",,0.58,-0.26790648296985786,4.0,Low,Low,19656.0,114683.84615384616,7
+11-3031,Financial Managers,,0.55,-0.38447647937658935,4.0,Low,Low,18208.5,180938.75,8
+29-1141,Registered Nurses,,0.3,-1.3558931160993548,3.0,Low,Low,18731.5,97635.625,8
+53-7062,"Laborers and Freight, Stock, and Material Movers, Hand",,0.06,-2.288453087353209,1.0,Low,Low,32406.5,41480.625,8
+35-2014,"Cooks, Restaurant",,0.05,-2.32730975282212,2.0,Low,Low,6467.0,36340.0,2
+47-2061,Construction Laborers,,,,2.0,,,39536.5,49240.0,6

@@ -51,6 +51,16 @@ my own project conventions before submitting.
 
 **Verification:** I ran `uv run oews-pipeline run`, `uv run oews-pipeline rerun-check`, and `uv run pytest -q` locally and reviewed the generated `QUALITY_REPORT.md` and `RERUN_CHECK.md`.
 
+## Assignment 5: Exploratory Data Analysis Module
+
+**Tool:** Claude (Anthropic), October 2026.
+
+**What the AI produced:** a first draft of the `src/oews_eda/` package (data-quality gate, descriptive functions, hypothesis tests with assumption checks, cluster-robust OLS, figure functions, `run_all` runner and CLI), `tests/test_eda.py`, `notebooks/02_eda.ipynb` and its builder script, and first drafts of `docs/EDA_METHODOLOGY.md`, `docs/A5_EXECUTIVE_SUMMARY.md` and `docs/A5_EVIDENCE_MAP.md`. All of it was built on my A3 research design and my A4 database.
+
+**What is mine:** the research question, hypotheses (one-sided employment H1, two-sided wages), unit of analysis, pre/post timing and delayed-post robustness check, the decision to cluster by occupation, and the descriptive-only analyst-vs-clerk contrast, all carried over from A3 and A4. I decided which findings go in the executive summary and how they are framed for stakeholders.
+
+**Verification:** I ran `uv sync`, `uv run oews-pipeline run`, `uv run oews-eda`, and `uv run pytest -q` locally, re-ran the notebook, and reviewed the figures, test results and interpretations. All reported numbers come from the synthetic sample and are labeled as such.
+
 ---
 
 _Update this file as AI assistance is used in future assignments - add a

@@ -1,0 +1,270 @@
+{
+  "source_mode": "sample",
+  "data_quality": {
+    "passed": true,
+    "checks": {
+      "unique_key": true,
+      "years_complete": true,
+      "flags_consistent": true,
+      "exposure_range": true,
+      "positive_values": true,
+      "exposure_coverage": true
+    },
+    "duplicate_keys": 0,
+    "years": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "flag_conflicts": 0,
+    "emp_null_unflagged": 0,
+    "exposure_coverage_share": 0.9535,
+    "occupations_without_exposure": [
+      "47-2061"
+    ]
+  },
+  "panel": {
+    "rows": 645,
+    "cells": 130,
+    "occupations": 20,
+    "industries": 10,
+    "years": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "balanced_emp_cells": 90,
+    "cells_with_change": 129
+  },
+  "exposure_median": 0.74,
+  "group_means_pct": {
+    "emp": {
+      "High": 2.68,
+      "Low": 5.61
+    },
+    "wage": {
+      "High": 8.49,
+      "Low": 8.54
+    }
+  },
+  "test_emp": {
+    "outcome": "d_log_emp",
+    "h0": "mean(High) - mean(Low) >= 0",
+    "h1": "mean(High) - mean(Low) < 0",
+    "alternative": "less",
+    "n_high": 53,
+    "n_low": 70,
+    "mean_high": 0.026471428818219216,
+    "mean_low": 0.05462058170635112,
+    "diff": -0.0281491528881319,
+    "diff_pct_points": -2.775665691642537,
+    "test_used": "Student's t",
+    "statistic": -4.2583000924013055,
+    "p_value": 2.0466246146232124e-05,
+    "hedges_g": -0.7705413890263118,
+    "cluster_ci_low": -0.046895615857997494,
+    "cluster_ci_high": -0.012223904851984624,
+    "mann_whitney_p": 1.8196166556238707e-05,
+    "assumptions": {
+      "n_a": 53,
+      "n_b": 70,
+      "shapiro_a_W": 0.9890899248829528,
+      "shapiro_a_p": 0.9081615318566233,
+      "shapiro_b_W": 0.9762416542248072,
+      "shapiro_b_p": 0.20426345212506408,
+      "levene_W": 3.537452792418444,
+      "levene_p": 0.06240121979422618,
+      "normal_or_large_n": true,
+      "equal_variances": true,
+      "recommended_test": "student_t"
+    },
+    "decision": "Reject H0",
+    "interpretation": "High-exposure cells' employment grew about 2.8% less than low-exposure cells' between the pre and post periods (Hedges' g = -0.77). The gap is statistically distinguishable from zero at the 5% level, and the occupation-cluster bootstrap CI also excludes zero, so the result does not rest on treating cells of the same occupation as independent."
+  },
+  "test_wage": {
+    "outcome": "d_log_wage",
+    "h0": "mean(High) - mean(Low) = 0",
+    "h1": "mean(High) - mean(Low) != 0",
+    "alternative": "two-sided",
+    "n_high": 53,
+    "n_low": 71,
+    "mean_high": 0.08148183388508279,
+    "mean_low": 0.08193900487800694,
+    "diff": -0.0004571709929241524,
+    "diff_pct_points": -0.04570665061891521,
+    "test_used": "Student's t",
+    "statistic": -0.062287034952027434,
+    "p_value": 0.9504361840170025,
+    "hedges_g": -0.011237191745772639,
+    "cluster_ci_low": -0.011677751981304777,
+    "cluster_ci_high": 0.009166243060437576,
+    "mann_whitney_p": 0.8280613930565218,
+    "assumptions": {
+      "n_a": 53,
+      "n_b": 71,
+      "shapiro_a_W": 0.9710786375030661,
+      "shapiro_a_p": 0.2246133709889489,
+      "shapiro_b_W": 0.9861384935266877,
+      "shapiro_b_p": 0.6256830945908963,
+      "levene_W": 0.6885782111301577,
+      "levene_p": 0.40826917342935065,
+      "normal_or_large_n": true,
+      "equal_variances": true,
+      "recommended_test": "student_t"
+    },
+    "decision": "Fail to reject H0",
+    "interpretation": "High- and low-exposure cells' mean wages changed by virtually the same amount between the pre and post periods (gap -0.05%, Hedges' g = -0.01). The gap is not statistically distinguishable from zero at the 5% level (the occupation-cluster bootstrap CI also includes zero)."
+  },
+  "test_emp_delayed_post": {
+    "outcome": "d_log_emp",
+    "h0": "mean(High) - mean(Low) >= 0",
+    "h1": "mean(High) - mean(Low) < 0",
+    "alternative": "less",
+    "n_high": 53,
+    "n_low": 71,
+    "mean_high": 0.019828471185329478,
+    "mean_low": 0.060637431631248156,
+    "diff": -0.04080896044591868,
+    "diff_pct_points": -3.998748720709089,
+    "test_used": "Student's t",
+    "statistic": -6.0308339621306235,
+    "p_value": 8.974039669411578e-09,
+    "hedges_g": -1.0880215709669712,
+    "cluster_ci_low": -0.05991162950222572,
+    "cluster_ci_high": -0.023015873608202737,
+    "mann_whitney_p": 1.1940415080582279e-08,
+    "assumptions": {
+      "n_a": 53,
+      "n_b": 71,
+      "shapiro_a_W": 0.9911059701763143,
+      "shapiro_a_p": 0.9613627706985213,
+      "shapiro_b_W": 0.9783956510806785,
+      "shapiro_b_p": 0.2593376652785814,
+      "levene_W": 1.1702236278211133,
+      "levene_p": 0.2814889052619923,
+      "normal_or_large_n": true,
+      "equal_variances": true,
+      "recommended_test": "student_t"
+    },
+    "decision": "Reject H0",
+    "interpretation": "High-exposure cells' employment grew about 4.0% less than low-exposure cells' between the pre and post periods (Hedges' g = -1.09). The gap is statistically distinguishable from zero at the 5% level, and the occupation-cluster bootstrap CI also excludes zero, so the result does not rest on treating cells of the same occupation as independent."
+  },
+  "permutation_emp": {
+    "n_occupations": 19,
+    "spearman_rho": -0.7945569348515471,
+    "p_value": 9.999000099990002e-05,
+    "alternative": "less",
+    "n_permutations": 10000
+  },
+  "permutation_wage": {
+    "n_occupations": 19,
+    "spearman_rho": -0.114135250310167,
+    "p_value": 0.636936306369363,
+    "alternative": "two-sided",
+    "n_permutations": 10000
+  },
+  "model_emp": {
+    "formula": "d_log_emp ~ exposure_z + job_zone_mean + pre_log_wage | FE: naics_code",
+    "n": 123,
+    "clusters": 19,
+    "r2": 0.45301122081244105,
+    "coef": {
+      "const": {
+        "coef": 0.20952,
+        "se_cluster": 0.13121,
+        "t": 1.59688,
+        "p_value": 0.1277,
+        "ci_low": -0.06613,
+        "ci_high": 0.48518
+      },
+      "exposure_z": {
+        "coef": -0.02583,
+        "se_cluster": 0.00392,
+        "t": -6.59169,
+        "p_value": 0.0,
+        "ci_low": -0.03406,
+        "ci_high": -0.0176
+      },
+      "job_zone_mean": {
+        "coef": 0.00457,
+        "se_cluster": 0.00502,
+        "t": 0.90867,
+        "p_value": 0.37553,
+        "ci_low": -0.00599,
+        "ci_high": 0.01512
+      },
+      "pre_log_wage": {
+        "coef": -0.01494,
+        "se_cluster": 0.01314,
+        "t": -1.13692,
+        "p_value": 0.27048,
+        "ci_low": -0.04254,
+        "ci_high": 0.01267
+      }
+    }
+  },
+  "model_wage": {
+    "formula": "d_log_wage ~ exposure_z + job_zone_mean + pre_log_wage | FE: naics_code",
+    "n": 124,
+    "clusters": 19,
+    "r2": 0.1061437027878579,
+    "coef": {
+      "const": {
+        "coef": 0.24955,
+        "se_cluster": 0.10529,
+        "t": 2.37023,
+        "p_value": 0.02915,
+        "ci_low": 0.02835,
+        "ci_high": 0.47075
+      },
+      "exposure_z": {
+        "coef": -0.00418,
+        "se_cluster": 0.00299,
+        "t": -1.39772,
+        "p_value": 0.17919,
+        "ci_low": -0.01045,
+        "ci_high": 0.0021
+      },
+      "job_zone_mean": {
+        "coef": 0.01222,
+        "se_cluster": 0.00514,
+        "t": 2.37747,
+        "p_value": 0.02872,
+        "ci_low": 0.00142,
+        "ci_high": 0.02302
+      },
+      "pre_log_wage": {
+        "coef": -0.0177,
+        "se_cluster": 0.01059,
+        "t": -1.67154,
+        "p_value": 0.11191,
+        "ci_low": -0.03995,
+        "ci_high": 0.00455
+      }
+    }
+  },
+  "vif": {
+    "exposure_z": 1.39,
+    "job_zone_mean": 4.38,
+    "pre_log_wage": 3.8
+  },
+  "emp_index_2025_by_tercile": {
+    "High": 102.3,
+    "Low": 111.6,
+    "Middle": 103.1
+  },
+  "focal_index_2025": {
+    "analyst": {
+      "emp_index": 104.8,
+      "wage_index": 114.5
+    },
+    "clerk_contrast": {
+      "emp_index": 107.3,
+      "wage_index": 117.3
+    }
+  }
+}

@@ -155,3 +155,19 @@ Using the real data instead of the sample: see [docs/DATA_ACCESS.md](docs/DATA_A
 - [Data dictionary](docs/DATA_DICTIONARY.md)
 - [Quality report](docs/QUALITY_REPORT.md) and [re-runnability check](docs/RERUN_CHECK.md)
 - [Rubric evidence map](docs/A4_EVIDENCE_MAP.md)
+
+## Assignment 5: Exploratory Data Analysis
+
+Reusable EDA package `src/oews_eda/` on top of the A4 database: data-quality gate, univariate/bivariate/multivariate analysis, hypothesis tests with assumption checks, occupation-clustered regression, and nine colorblind-safe figures.
+
+```powershell
+uv sync
+uv run oews-pipeline run   # build the database (sample; --source raw for real data)
+uv run oews-eda            # regenerate reports/figures/*.png and reports/eda/*
+uv run pytest -q           # 15 tests
+```
+
+- [Executive summary](docs/A5_EXECUTIVE_SUMMARY.md) (non-technical)
+- [Analysis notebook](notebooks/02_eda.ipynb) (imports `oews_eda`)
+- [Methodology and code documentation](docs/EDA_METHODOLOGY.md)
+- [Rubric evidence map](docs/A5_EVIDENCE_MAP.md)
