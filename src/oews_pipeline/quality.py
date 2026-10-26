@@ -125,10 +125,12 @@ Total quarantined this run: **{rep['rejected_total']}**. Every rejected row is s
 {_md_table(rep['rejected_by_reason'])}
 ## 4. Duplicates
 
+What "duplicate" means here: OEWS rows are published survey **estimates**, one per occupation x industry x year, not transactions, and they carry no transaction identifier. An exact duplicate is therefore an identical *source row* repeated in a file (a file-level artifact), and a conflicting duplicate is two rows with the same natural key but different values. Neither establishes a duplicated underlying event; the checks only guarantee one estimate per key.
+
 | check | count |
 |---|---|
-| Exact duplicate copies quarantined (one copy kept) | {dup['source_exact_duplicates_quarantined']} |
-| Conflicting-duplicate rows quarantined (all copies) | {dup['source_conflicting_duplicates_quarantined']} |
+| Identical source rows: extra copies quarantined (one copy kept) | {dup['source_exact_duplicates_quarantined']} |
+| Same natural key, different values: all copies quarantined | {dup['source_conflicting_duplicates_quarantined']} |
 | Duplicate primary keys in `fact_oews_estimate` | {dup['database_duplicate_fact_keys']} |
 
 ## 5. Missingness

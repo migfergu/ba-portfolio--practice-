@@ -78,6 +78,38 @@ def test_permutation_test_detects_monotone_relation():
 
 def test_run_all_writes_every_output(db, tmp_path):
     s = report.run_all(db, fig_dir=tmp_path / "fig", table_dir=tmp_path / "tab")
-    assert len(list((tmp_path / "fig").glob("fig*.png"))) == 9
+    assert len(list((tmp_path / "fig").glob("fig*.png"))) == 11
     saved = json.loads((tmp_path / "tab" / "eda_summary.json").read_text())
-    assert saved["test_emp"]["h1"].endswith("< 0") and s["source_mode"] == "sample"
+    assert saved["tests"]["primary_emp_within_industry"]["h1"].endswith("< 0") and s["source_mode"] == "sample"
+    log = json.loads((tmp_path / "tab" / "eda_run_log.json").read_text())
+    assert {i["source_name"] for i in log["inputs"]} >= {"oews_2021", "exposure", "job_zones"}
+    assert all(len(i["sha256"]) == 64 for i in log["inputs"])
+
+
+def test_attrition_reconciles(db, panel):
+    a = data.attrition_table(panel, db)
+    n = dict(zip(a["stage"], a["n"]))
+    assert n["Passed validation -> fact table"] == len(panel)
+    assert a.attrs["out_of_grain_filtered"] + a.attrs["quarantined"] + len(panel) == n["OEWS rows read (5 files)"]
+    assert list(a.loc[a["unit"] == "rows", "n"]) == sorted(a.loc[a["unit"] == "rows", "n"], reverse=True)
+
+
+def test_practical_significance_classes():
+    f = inference.practical_significance
+    assert f(-0.05, -0.02) == "practically meaningful"
+    assert f(-0.004, 0.006) == "practically negligible"
+    assert f(-0.02, -0.002) == "detectable, size uncertain"
+    assert f(-0.02, 0.02) == "inconclusive"
+
+
+def test_within_industry_change_removes_industry_mean(panel):
+    cells = describe.cell_changes(panel)
+    means = cells.groupby("naics_code")["d_log_emp_wi"].mean()
+    assert np.allclose(means, 0, atol=1e-12)
+
+
+def test_manifest_verification_detects_changes(db):
+    expected = data.input_manifest(db).to_dict(orient="records")
+    assert data.compare_manifest(expected, db)["match"].all()
+    expected[0]["sha256"] = "0" * 64
+    assert not data.compare_manifest(expected, db)["match"].all()

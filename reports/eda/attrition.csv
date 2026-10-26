@@ -1,0 +1,8 @@
+stage,n,unit
+OEWS rows read (5 files),757,rows
+In panel grain (detailed occ x 4-digit ind),652,rows
+Passed validation -> fact table,645,rows
+Occupation has an exposure score,615,rows
+Employment not suppressed (model-ready),572,rows
+Cells with >=1 pre and >=1 post year,123,cells
+Cells observed in all 5 years (balanced),87,cells

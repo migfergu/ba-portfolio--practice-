@@ -43,3 +43,19 @@ Extraction stops with a named error if required columns are missing:
 - Job Zones: `O*NET-SOC Code, Title, Job Zone`
 
 If the Eloundou file uses different rating column names than `dv_rating_alpha/beta/gamma`, set `exposure_measure` in `sources.toml` to the correct header. The pipeline fails fast and names the missing column, rather than loading the wrong measure.
+
+## Full-data verification (privacy- and license-compliant)
+
+Every result in the repository is labeled `SYNTHETIC SAMPLE` or `Real-data run` (figure footnotes, `etl_run.source_mode`, `reports/eda/eda_run_log.json`). Licensed or restricted source files are **never committed**; only aggregate outputs and hashes are. Three ways for a reviewer to verify the full-data workflow without data changing hands through GitHub:
+
+1. **Reproducible run log (default).** After my raw run I commit `reports/eda/eda_run_log.json`, which holds file names, versions, sizes, row counts and SHA-256 hashes for every input, the code commit and library versions. Nothing else is included. An authorized reviewer downloads the same public releases (steps 1-3 above), runs:
+   ```powershell
+   uv run oews-pipeline run --source raw
+   uv run oews-eda --verify-against reports/eda/eda_run_log.json   # exit 0 = byte-identical inputs
+   uv run oews-eda                                                  # regenerates every table and figure
+   ```
+   and compares the regenerated `reports/eda/*.csv` and figures with the committed ones. `--verify-against` prints expected vs found hash and row count per file.
+2. **Vintage check.** The run log's `version` fields and `config/sources.toml` name each release: OEWS May 2021-2025 `nat4d` workbooks, Eloundou et al. (2024) `occ_level.csv` from `openai/GPTs-are-GPTs`, and O*NET 27.0. `oews_eda.data.OEWS_VINTAGE` and `docs/A5_RESEARCH_DESIGN.md` §4 record, per release, the pooled panels, MB3 method, SOC and NAICS versions, taken from the BLS technical notes, so a reviewer can confirm the downloaded files are the stated vintages.
+3. **Supervised run.** If a reviewer cannot download the files, I can run the raw pipeline live (screen share or in person) from a clean clone, show the hash check passing, and keep the inputs on my machine.
+
+Access controls: `data/raw/` and `data/processed/*.db` are git-ignored; only I hold the raw copies, on my own device. Outputs written by the EDA are aggregates (counts, means, model coefficients) at the published OEWS cell level and contain no microdata.

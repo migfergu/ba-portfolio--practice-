@@ -95,6 +95,8 @@ class GroupTestResult:
     cluster_ci_low: float
     cluster_ci_high: float
     mann_whitney_p: float
+    practical_threshold_pct: float = 1.0
+    practical_verdict: str = ""
     assumptions: dict = field(default_factory=dict)
     decision: str = ""
     interpretation: str = ""
@@ -104,13 +106,35 @@ class GroupTestResult:
         return asdict(self)
 
 
+def practical_significance(ci_low: float, ci_high: float, threshold: float = 0.01) -> str:
+    """Classify an uncertain estimate against a minimum practically meaningful gap (log points).
+
+    * 'practically meaningful'      the whole 95% CI lies beyond +/- threshold
+    * 'practically negligible'      the whole CI lies inside (-threshold, +threshold) (equivalence)
+    * 'detectable, size uncertain'  CI excludes 0 but reaches inside the threshold band
+    * 'inconclusive'                CI includes 0 and extends beyond the threshold band
+    """
+    if ci_high < -threshold or ci_low > threshold:
+        return "practically meaningful"
+    if -threshold < ci_low and ci_high < threshold:
+        return "practically negligible"
+    if ci_high < 0 or ci_low > 0:
+        return "detectable, size uncertain"
+    return "inconclusive"
+
+
 def exposure_group_test(cells: pd.DataFrame, value: str = "d_log_emp", alternative: str = "less",
-                        group: str = "exposure_group", alpha: float = 0.05) -> GroupTestResult:
+                        group: str = "exposure_group", alpha: float = 0.05,
+                        practical_threshold: float = 0.01) -> GroupTestResult:
     """Test whether high-exposure cells changed differently from low-exposure cells pre -> post.
 
     Hypotheses (A3 H1 for employment is directional; wages are two-sided):
         H0: mu_High - mu_Low >= 0 (alternative='less') or = 0 (alternative='two-sided')
         H1: mu_High - mu_Low <  0                        or != 0
+
+    ``practical_threshold`` (log points, default 0.01 = about 1 percentage point of growth over the
+    post period) is the smallest gap the analysis treats as substantively meaningful; the occupation-
+    cluster CI is classified against it with :func:`practical_significance`.
 
     The test is chosen from :func:`check_assumptions` (Welch's t when variances differ, Student's t
     when they do not, Mann-Whitney U when normality fails in small samples). Mann-Whitney is
@@ -135,6 +159,7 @@ def exposure_group_test(cells: pd.DataFrame, value: str = "d_log_emp", alternati
     reject = res.pvalue < alpha
     ci_excludes_zero = ci[1] < 0 or ci[0] > 0
     label = "employment" if "emp" in value else "mean wages"
+    verdict = practical_significance(ci[0], ci[1], practical_threshold)
     pct = (np.exp(diff) - 1) * 100
     if abs(pct) < 0.5:
         interp = (f"High- and low-exposure cells' {label} changed by virtually the same amount between the pre "
@@ -154,12 +179,16 @@ def exposure_group_test(cells: pd.DataFrame, value: str = "d_log_emp", alternati
         interp += ("The gap is not statistically distinguishable from zero at the 5% level"
                    + (" (the occupation-cluster bootstrap CI also includes zero)." if not ci_excludes_zero
                       else ", although the cluster bootstrap CI excludes zero; treat as inconclusive."))
+    interp += (f" Against a minimum meaningful gap of {practical_threshold * 100:.1f} percentage point(s), the "
+               f"cluster CI [{ci[0] * 100:+.2f}, {ci[1] * 100:+.2f}] is: {verdict}. This is a differential "
+               "association between predicted task exposure and the outcome, not an effect of GenAI adoption.")
     return GroupTestResult(
         outcome=value, h0=h0, h1=h1, alternative=alternative, n_high=int(hi.size), n_low=int(lo.size),
         mean_high=float(hi.mean()), mean_low=float(lo.mean()), diff=diff, diff_pct_points=float(pct),
         test_used=name, statistic=float(res.statistic), p_value=float(res.pvalue),
         hedges_g=hedges_g(hi, lo), cluster_ci_low=ci[0], cluster_ci_high=ci[1],
-        mann_whitney_p=float(mw.pvalue), assumptions=a,
+        mann_whitney_p=float(mw.pvalue), practical_threshold_pct=practical_threshold * 100,
+        practical_verdict=practical_significance(ci[0], ci[1], practical_threshold), assumptions=a,
         decision="Reject H0" if reject else "Fail to reject H0", interpretation=interp)
 
 
@@ -254,3 +283,26 @@ def vif(df: pd.DataFrame, columns: list[str]) -> pd.Series:
         r2 = 1 - np.var(d[c].to_numpy() - A @ coef) / np.var(d[c].to_numpy())
         out[c] = 1 / (1 - r2) if r2 < 1 else np.inf
     return pd.Series(out, name="VIF")
+
+
+def event_time_gaps(changes: pd.DataFrame, n_boot: int = 2000, seed: int = 751) -> pd.DataFrame:
+    """High-minus-Low gap in the change since 2022, by year, with occupation-cluster bootstrap CIs.
+
+    Args:
+        changes: Output of :func:`oews_eda.describe.cell_year_changes`.
+
+    Returns:
+        One row per year: gap, ci_low, ci_high, n_high, n_low (the reference year has gap 0 by construction).
+    """
+    rows = []
+    for year, d in changes.dropna(subset=["exposure_group"]).groupby("year"):
+        hi = d.loc[d["exposure_group"] == "High", "change"]
+        lo = d.loc[d["exposure_group"] == "Low", "change"]
+        gap = hi.mean() - lo.mean()
+        if np.allclose(d["change"], 0):
+            ci = (0.0, 0.0)
+        else:
+            ci = cluster_bootstrap_diff(d, "change", "exposure_group", "High", "Low", n_boot=n_boot, seed=seed)
+        rows.append({"year": int(year), "gap": float(gap), "ci_low": ci[0], "ci_high": ci[1],
+                     "n_high": int(hi.size), "n_low": int(lo.size)})
+    return pd.DataFrame(rows)

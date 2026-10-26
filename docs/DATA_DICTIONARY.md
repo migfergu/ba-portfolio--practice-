@@ -103,7 +103,7 @@ Exposure rows for SOCs not in the OEWS panel are counted and dropped (they would
 | NON_NUMERIC | Numeric field is neither a number nor a documented BLS symbol | Row quarantined |
 | RANGE | Value outside its valid range (negative employment, rating outside [0,1], Job Zone outside 1–5) | Row quarantined |
 | MISSING_REQUIRED | Blank code or title | Row quarantined |
-| DUPLICATE_EXACT | Identical copy of an earlier row | Extra copy quarantined; one kept |
+| DUPLICATE_EXACT | Identical source row repeated in the file (a file-level repeat of a published estimate, not evidence of a duplicate transaction; OEWS has no transaction IDs) | Extra copy quarantined; one kept |
 | DUPLICATE_CONFLICT | Same key, different values | All copies quarantined |
 
 ## View: v_analysis_panel

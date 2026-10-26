@@ -1,0 +1,6 @@
+year,panels_pooled,post_chatgpt_panels,estimation,soc,naics,post_panel_share
+2021,Nov 2018 - May 2021,0,MB3 (first release),2018 SOC (first full),2017 NAICS,0.0
+2022,Nov 2019 - May 2022,0,MB3,2018 SOC,2022 NAICS,0.0
+2023,Nov 2020 - May 2023,1,MB3,2018 SOC,2022 NAICS,0.16666666666666666
+2024,Nov 2021 - May 2024,3,MB3,2018 SOC,2022 NAICS,0.5
+2025,Nov 2022 - May 2025,5,MB3,2018 SOC,2022 NAICS,0.8333333333333334

@@ -158,16 +158,20 @@ Using the real data instead of the sample: see [docs/DATA_ACCESS.md](docs/DATA_A
 
 ## Assignment 5: Exploratory Data Analysis
 
-Reusable EDA package `src/oews_eda/` on top of the A4 database: data-quality gate, univariate/bivariate/multivariate analysis, hypothesis tests with assumption checks, occupation-clustered regression, and nine colorblind-safe figures.
+Reusable EDA package `src/oews_eda/` on top of the A4 database: row definition and merge attrition, data-quality gate, univariate/bivariate/multivariate analysis, within-industry hypothesis tests with assumption checks and practical-significance verdicts, event-time gaps that account for OEWS panel pooling, a pre-period placebo, occupation-clustered regression, eleven colorblind-safe figures, and a checksum run log for full-data verification.
+
+> Committed results are from the **synthetic sample**. Licensed source files are never committed; see [Full-data verification](docs/DATA_ACCESS.md#full-data-verification-privacy--and-license-compliant).
 
 ```powershell
 uv sync
 uv run oews-pipeline run   # build the database (sample; --source raw for real data)
 uv run oews-eda            # regenerate reports/figures/*.png and reports/eda/*
-uv run pytest -q           # 15 tests
+uv run pytest -q           # 19 tests (8 A4 + 11 A5)
+uv run oews-eda --verify-against reports/eda/eda_run_log.json   # input SHA-256 check
 ```
 
 - [Executive summary](docs/A5_EXECUTIVE_SUMMARY.md) (non-technical)
 - [Analysis notebook](notebooks/02_eda.ipynb) (imports `oews_eda`)
 - [Methodology and code documentation](docs/EDA_METHODOLOGY.md)
+- [Research-design notes answering the A4 feedback](docs/A5_RESEARCH_DESIGN.md)
 - [Rubric evidence map](docs/A5_EVIDENCE_MAP.md)

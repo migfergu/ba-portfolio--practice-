@@ -1,0 +1,5 @@
+join,codes,rule,audit field
+Exposure -> panel,O*NET-SOC 8-digit (NN-NNNN.NN) -> 2018 SOC 6-digit,Truncate suffix; mean of O*NET codes per SOC,occupation_exposure.n_onet_codes
+Job Zones -> panel,O*NET-SOC 8-digit -> 2018 SOC 6-digit,Truncate suffix; mean and max per SOC,occupation_preparation.n_onet_codes
+OEWS industries,"NAICS 4-digit, padded to 6 (5221 -> 522100)",2017 NAICS (May 2021) vs 2022 NAICS (May 2022+),Changed 4-digit codes appear as unbalanced cells; add naics_crosswalk if found on raw load
+OEWS occupations,"2018 SOC detailed codes, all panel years",No SOC crosswalk needed for May 2021-2025,dim_occupation.soc_vintage

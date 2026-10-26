@@ -155,7 +155,7 @@ def plot_exposure_vs_change(cells: pd.DataFrame, occ: pd.DataFrame, value: str =
                         arrowprops={"arrowstyle": "-", "color": "#555555"})
     ax.axhline(0, color="#999999", linewidth=1)
     what = "employment" if "emp" in value else "mean wage"
-    ax.set(title=f"Higher GenAI exposure, slower {what} growth after ChatGPT",
+    ax.set(title=f"Occupations with higher predicted GenAI exposure: slower {what} growth after 2022",
            xlabel="Share of tasks exposed to GenAI (0-1)",
            ylabel=f"Change in log {what}, post vs pre (x100 = approx. %)")
     ax.legend(loc="lower left", fontsize=9)
@@ -216,8 +216,8 @@ def plot_coefficients(table: pd.DataFrame, labels: dict[str, str] | None = None,
     ax.axvline(0, color=GREY, linestyle="--")
     for y, (_, r) in enumerate(t.iterrows()):
         ax.text(r["ci_high"] * 100, y + 0.18, f" {r['coef'] * 100:+.2f} ({fmt_p(r['p_value'])})", fontsize=9)
-    ax.set(title=title or "Multivariate model: exposure effect holds after controls",
-           xlabel="Effect on change in log employment (x100 = approx. % points), 95% CI clustered by occupation")
+    ax.set(title=title or "Exposure association with employment change holds after controls",
+           xlabel="Association with change in log employment (x100 = approx. % points), 95% CI clustered by occupation")
     ax.set_ylim(-0.6, len(t) - 0.4)
     return _finish(fig, path, source_mode)
 
@@ -242,8 +242,9 @@ def plot_group_test(cells: pd.DataFrame, value: str, result, path=None, source_m
         ax.plot(i, means[g], marker="D", color="#222222", markersize=9, zorder=4)
         ax.text(i + 0.28, means[g], f"mean {means[g]:+.1f}", va="center", fontsize=9)
     what = "employment" if "emp" in value else "mean wage"
+    wi = ", relative to industry mean" if value.endswith("_wi") else ""
     ax.set(xlabel="Occupation GenAI exposure (median split)",
-           ylabel=f"Change in log {what}, post vs pre (x100)",
+           ylabel=f"Change in log {what}, post vs pre{wi} (x100)",
            title=f"{result.test_used}: {fmt_p(result.p_value)}, Hedges' g = {result.hedges_g:.2f}")
     ax.title.set_fontsize(11)
     for k, g in enumerate(order):
@@ -286,3 +287,50 @@ def plot_focal_contrast(contrast: pd.DataFrame, path=None, source_mode=None) -> 
     fig.tight_layout(rect=(0, 0.08, 1, 1))
     fig.legend(handles, labels, loc="lower center", ncol=2, fontsize=9, bbox_to_anchor=(0.5, 0.0))
     return _finish(fig, path, source_mode, foot_y=-0.03)
+
+
+def plot_attrition(attrition: pd.DataFrame, path=None, source_mode=None) -> plt.Figure:
+    """Horizontal bars: rows / cells surviving each filter and merge, source file to analysis sample."""
+    set_style()
+    fig, ax = plt.subplots(figsize=(9, 4.8))
+    a = attrition.iloc[::-1].reset_index(drop=True)
+    colors = [GREEN if u == "cells" else BLUE for u in a["unit"]]
+    hatches = ["//" if u == "cells" else "" for u in a["unit"]]
+    bars = ax.barh(a["stage"], a["n"], color=colors, edgecolor="white", linewidth=2)
+    for b, h in zip(bars, hatches):
+        b.set_hatch(h)
+    for y, (n, u) in enumerate(zip(a["n"], a["unit"])):
+        ax.text(n + a["n"].max() * 0.01, y, f"{n:,} {u}", va="center", fontsize=9)
+    ax.set(title="From source file to analysis sample: what survives each step",
+           xlabel="Count (rows: occupation x industry x year; cells: occupation x industry)")
+    ax.set_xlim(0, a["n"].max() * 1.18)
+    from matplotlib.patches import Patch
+    ax.legend(handles=[Patch(color=BLUE, label="Rows"), Patch(facecolor=GREEN, hatch="//", edgecolor="white", label="Cells")],
+              loc="lower right")
+    return _finish(fig, path, source_mode)
+
+
+def plot_event_time_gaps(gaps: pd.DataFrame, vintage: pd.DataFrame, path=None, source_mode=None,
+                         outcome_label: str = "employment") -> plt.Figure:
+    """Year-by-year High-minus-Low gap (within industry, 2022 = 0) with cluster CIs and the share of
+    each May estimate's six pooled survey panels collected after ChatGPT's release."""
+    set_style()
+    fig, ax = plt.subplots(figsize=(9, 5))
+    g = gaps.sort_values("year")
+    ax.fill_between(g["year"], g["ci_low"] * 100, g["ci_high"] * 100, color=BLUE, alpha=0.15,
+                    label="95% CI (occupation-cluster bootstrap)")
+    ax.plot(g["year"], g["gap"] * 100, color=BLUE, marker="o", markersize=9, linewidth=2,
+            label="High minus Low exposure, within industry")
+    ax.axhline(0, color=GREY, linewidth=1.2, linestyle="--")
+    ax.axvline(REFERENCE_YEAR + 0.5, color=GREY, linestyle=":", linewidth=1.5)
+    lo = min(g["ci_low"].min() * 100, -1)
+    ax.set_ylim(lo * 1.2, max(g["ci_high"].max() * 100, 1) + 1.5)
+    ticks = [int(y) for y in g["year"]]
+    ax.set_xticks(ticks)
+    ax.set_xticklabels([f"{y}\n{vintage.loc[y, 'post_chatgpt_panels']}/6 panels post" if y in vintage.index else str(y)
+                        for y in ticks])
+    ax.set(title=f"The {outcome_label} gap opens as more post-ChatGPT survey panels enter the estimates",
+           xlabel="May reference year, and how many of its 6 pooled survey panels post-date ChatGPT (2022 = 0)",
+           ylabel=f"Gap in change in log {outcome_label} since 2022 (x100)")
+    ax.legend(loc="upper right", fontsize=9)
+    return _finish(fig, path, source_mode, foot_y=-0.06)

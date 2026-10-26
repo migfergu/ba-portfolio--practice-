@@ -78,6 +78,12 @@ def cell_changes(panel: pd.DataFrame, post_col: str = "post") -> pd.DataFrame:
         out[f"post_{var}"] = means.get(1)
         out[f"d_{var}"] = out[f"post_{var}"] - out[f"pre_{var}"]
     out = out.reset_index()
+    # Within-industry change: subtract the industry's mean change, so the comparison is high- vs
+    # low-exposure occupations in the SAME industry over the SAME period (the long-difference analogue
+    # of the A3 industry-by-year fixed effects). This removes industry-wide shocks such as rate cycles.
+    for var in ("log_emp", "log_wage"):
+        col = f"d_{var}"
+        out[f"{col}_wi"] = out[col] - out.groupby("naics_code")[col].transform("mean")
     out.attrs.update(panel.attrs)
     out.attrs["post_definition"] = post_col
     return out
@@ -119,6 +125,32 @@ def occupation_changes(cells: pd.DataFrame, value: str = "d_log_emp") -> pd.Data
                              value: np.average(g[value], weights=g["w"]), "n_cells": len(g)}),
         include_groups=False)
     return agg.sort_values("exposure_main", ascending=False)
+
+
+def cell_year_changes(panel: pd.DataFrame, outcome: str = "log_emp", base_year: int = REFERENCE_YEAR,
+                      within_industry: bool = True) -> pd.DataFrame:
+    """Per cell and year: outcome minus the cell's own base-year value (event time, 2022 = 0).
+
+    With ``within_industry=True`` the industry-by-year mean change is subtracted, so each value is
+    the cell's change relative to other occupations in its industry in that year.
+
+    Returns:
+        Long frame with cell_id, soc_code, naics_code, year, exposure_group, change.
+    """
+    d = panel.dropna(subset=[outcome]).copy()
+    base = d[d["year"] == base_year].set_index("cell_id")[outcome]
+    d = d[d["cell_id"].isin(base.index)]
+    d["change"] = d[outcome] - d["cell_id"].map(base)
+    if within_industry:
+        d["change"] = d["change"] - d.groupby(["naics_code", "year"])["change"].transform("mean")
+    return d[["cell_id", "soc_code", "naics_code", "year", "exposure_group", "exposure_main", "change"]]
+
+
+def pre_period_change(panel: pd.DataFrame, outcome: str = "log_emp", within_industry: bool = True) -> pd.DataFrame:
+    """Placebo outcome: 2021 -> 2022 change per cell (both years pre-ChatGPT; should show no exposure gap)."""
+    ch = cell_year_changes(panel, outcome, base_year=2021, within_industry=within_industry)
+    out = ch[ch["year"] == REFERENCE_YEAR].rename(columns={"change": f"d_pre_{outcome}"})
+    return out.drop(columns="year")
 
 
 # ---------------------------------------------------------------- multivariate / trends

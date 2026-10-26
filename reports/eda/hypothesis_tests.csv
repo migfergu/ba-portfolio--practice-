@@ -1,0 +1,7 @@
+,outcome,H1,test,p,gap_pct,hedges_g,cluster_ci_low_pct,cluster_ci_high_pct,decision,practical_verdict
+primary_emp_within_industry,d_log_emp_wi,mean(High) - mean(Low) < 0,Welch's t,5.98796823992813e-06,-2.6922498446930065,-0.7881327288042402,-4.42918821912499,-1.2720704652080086,Reject H0,practically meaningful
+emp_raw_change,d_log_emp,mean(High) - mean(Low) < 0,Student's t,2.0466246146232124e-05,-2.775665691642537,-0.7705413890263118,-4.6895615857997495,-1.2223904851984624,Reject H0,practically meaningful
+wage_within_industry,d_log_wage_wi,mean(High) - mean(Low) != 0,Student's t,0.9736867893115551,0.023297806764732698,0.005962982989555885,-1.164027400717689,0.9967776576385772,Fail to reject H0,inconclusive
+emp_delayed_post,d_log_emp_wi,mean(High) - mean(Low) < 0,Student's t,3.45011862298925e-09,-3.8965381233657115,-1.1239238043716406,-5.755715063320353,-2.270599746158186,Reject H0,practically meaningful
+emp_excluding_2021,d_log_emp_wi,mean(High) - mean(Low) < 0,Student's t,0.0005463270300356484,-2.5182265340009335,-0.6205347044127095,-4.452080332092961,-0.9675635985488823,Reject H0,"detectable, size uncertain"
+placebo_2021_2022,d_pre_log_emp,mean(High) - mean(Low) != 0,Student's t,0.5038176679382954,-0.5029089036593937,-0.1309885937356842,-2.0607918221792962,0.9131575464716706,Fail to reject H0,inconclusive

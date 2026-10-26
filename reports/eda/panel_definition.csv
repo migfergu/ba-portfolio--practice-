@@ -1,0 +1,9 @@
+role,field,source,notes
+Row (unit),occupation x 4-digit industry x May reference year,BLS OEWS national industry-specific (nat4d),"O_GROUP = detailed, I_GROUP = 4-digit; key (soc_code, naics_code, year)"
+Outcome,tot_emp -> log_emp,OEWS TOT_EMP,"Employment level (a stock), not hires or separations"
+Outcome,a_mean -> log_wage,OEWS A_MEAN,Mean annual wage of incumbents; composition-sensitive
+Precision,"emp_prse, mean_prse","OEWS EMP_PRSE, MEAN_PRSE",Relative standard errors (%) for sensitivity checks
+Flags,"emp_suppressed, wage_suppressed, wage_topcoded","OEWS symbols **, *, #","Kept as NULL + flag, never imputed"
+Exposure,exposure_main / exposure_z,"Eloundou et al. (2024) occ_level.csv, dv_rating_gamma","Predicted technical potential (E1+E2), fixed over time; NOT observed adoption"
+Control / moderator,job_zone_mean,"O*NET 27.0 Job Zones (Aug 2022, pre-ChatGPT)",Preparation level 1-5
+Timing,"post (2023+), post_delayed (2024+)",config/sources.toml,Plus post_panel_share from OEWS_VINTAGE

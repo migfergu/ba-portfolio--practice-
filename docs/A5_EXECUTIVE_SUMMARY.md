@@ -1,44 +1,51 @@
-# Executive Summary: GenAI Exposure and Finance-Sector Jobs
+# Executive Summary: GenAI Exposure and Finance-Sector Employment and Pay
 
 BUS 751 · Assignment 5 (Exploratory Data Analysis) · Miguel L. Ferguson II · October 2026
 
-> **Read this first.** The numbers below come from the project's **synthetic sample** (invented values in the real file layouts), which is what the public repository builds. They show what the analysis will report and how to read it, not facts about real occupations. Running `uv run oews-pipeline run --source raw` and then `uv run oews-eda` refreshes every number in `reports/eda/eda_summary.json` and every figure on the real BLS data; the sentences below are then updated from that file.
+> **Data status.** Every number below comes from the project's **synthetic sample**: invented values in the real BLS file layouts, with a built-in pattern used to test the code. The numbers show what the analysis reports and how to act on it; they are not facts about real occupations. The same code produces the real-data version after an authorized run on the licensed BLS files (`docs/DATA_ACCESS.md`, "Full-data verification"). Licensed data are never stored in this repository.
 
-## The question
+## The question (from A3)
 
-After ChatGPT's release in late 2022, did jobs whose tasks are most exposed to generative AI grow or pay differently from less-exposed jobs? We compare about 20 occupations across 10 finance, professional-services and comparison industries, May 2021 through May 2025, with a focus on **financial and investment analysts** and **bookkeeping and accounting clerks**.
+After ChatGPT's release in November 2022, did occupations whose tasks GenAI *could* most affect see different **employment levels** or **average pay** than less-exposed occupations in the same industry? The study covers about 20 occupations across 10 finance, professional-services and comparison industries, May 2021-May 2025, with financial and investment analysts and bookkeeping clerks as focal roles.
+
+"Exposure" is a published estimate of each occupation's *technical potential* for GenAI. It does not show that employers used it. Every finding below is therefore a **difference between more- and less-exposed jobs**, not a measured impact of GenAI.
 
 ## Bottom line
 
-**Headcount in highly exposed jobs grew more slowly after 2022, and the gap is widening; pay has not moved.** Plan for slower hiring growth in GenAI-exposed roles now, and do not cut pay benchmarks on GenAI grounds yet.
+**On the sample, employment in highly exposed occupations grew about 2.7 percentage points less than in less-exposed occupations in the same industries after 2022, a gap large enough to matter for workforce plans. Average pay showed no detectable difference, though a small pay gap cannot yet be ruled out.**
 
-## What we found
+## What the analysis shows (sample run)
 
-1. **Exposed jobs added staff about half as fast.** From 2021-22 to 2023-25, employment in high-exposure occupation-industry groups grew about 2.7%, against about 5.6% in low-exposure groups (Figure 4). The gap holds after accounting for the industry, the training a job requires, and its starting pay, and it passes every statistical check we applied (Section 5 of the notebook). A one-step increase in exposure (one standard deviation) goes with about 2.6 points less employment growth.
-2. **The gap is getting bigger, not fading.** Measuring "after" from 2024 instead of 2023 enlarges the gap from about 2.8 to about 4 points, and the trend chart (Figure 5) shows the low-exposure group pulling further ahead each year. That pattern fits a slow rollout of the technology rather than a one-time shock.
-3. **Pay has not diverged.** Average wages rose about 8.5% in both groups; there is no measurable difference (Figure 4 companion results, notebook Section 5.2). So far, exposure shows up in *how many* people are hired, not in *what they earn*.
-4. **Exposure is its own risk factor.** How exposed a job is has almost nothing to do with how much training it requires or how well it pays (Figure 6). "High-skill" or "well-paid" does not mean "safe".
-5. **Analysts versus clerks.** Both focal roles sit at the high-exposure end. With only two or three comparable industries each, we describe their paths (Figure 9) but do not draw conclusions; that comparison is tested formally in the next phase.
+1. **Slower employment growth in exposed occupations.** Within the same industry, employment in high-exposure occupations grew about 2.7 points less than in low-exposure occupations between 2021-22 and 2023-25 (Figures 4 and 8). The gap clears our pre-set bar of 1 point for "large enough to matter": its whole uncertainty range is −4.4 to −1.3 points. Controls for job preparation and starting pay do not remove it (Figure 7).
+2. **The gap shows up as post-ChatGPT survey data accumulate.** Each BLS May estimate blends six survey rounds from three years, so May 2023 contains only one round collected after ChatGPT. Correspondingly, the gap is about zero in 2023, −2.4 points in 2024 and −5.3 points in 2025 (Figure 11). This timing is what BLS's data construction alone would produce, so it should not be read as proof that adoption is speeding up.
+3. **No detectable pay difference.** Average annual pay rose about 8.5% in both groups. The uncertainty range (about −1.2 to +1.0 points) still includes a 1-point gap in either direction, so the right reading is "no pay difference detected yet", not "pay is unaffected".
+4. **Exposure is its own dimension.** An occupation's exposure is almost unrelated to how much preparation it requires or how well it pays (Figure 6). High-skill or high-pay roles are not automatically low-exposure.
+5. **Analysts vs. clerks.** Both focal roles are at the high-exposure end. With only two or three comparable industries each, Figure 9 is context only; the formal comparison comes in A6.
 
-## What to do with this
+## What a decision-maker can do with this
 
-| Audience | Action |
-|---|---|
-| Workforce planners in finance | Build slower headcount growth into plans for exposed roles (analysts, accountants, data entry, developers); revisit yearly, because the effect is still growing. |
-| Talent and L&D leaders | Shift development budgets toward the tasks GenAI does not cover in exposed roles, rather than toward hiring more people into the same task mix. |
-| Compensation teams | Keep current pay benchmarks; there is no evidence of a GenAI-related wage discount yet. Re-check when the 2026 data arrive. |
-| Program and policy readers | Track exposed occupations as a group, not by skill level or pay band, since exposure cuts across both. |
+| Audience | Action now | Revisit when |
+|---|---|---|
+| Finance workforce planners | Treat exposure as a planning variable. Build a scenario with ~2-3 points slower headcount growth for highly exposed roles (analysts, accountants, data entry, developers) next to the baseline plan, rather than assuming either no change or job losses. | The real-data run confirms or rejects the sample-size gap |
+| Talent and L&D leaders | Prioritize reskilling in exposed roles toward their less-exposed tasks; this holds whatever the eventual cause of the gap. | A6 shows whether preparation level changes the gap |
+| Compensation teams | Do not apply a GenAI discount to pay benchmarks; no pay difference is detected. Keep monitoring, since a ~1-point difference is not ruled out. | The May 2026 release adds data |
+| Program and policy readers | Monitor exposed occupations as a group across skill and pay bands. | Each new BLS release |
 
-## How confident should you be?
+## How much weight to put on it
 
-* **Moderately, as a direction.** The pattern is consistent across five separate checks, including ones that do not treat each industry cell of the same occupation as independent evidence.
-* **It is an association, not proof of cause.** Other forces that hit exposed jobs after 2022 (interest rates, the tech-sector slowdown) could contribute. The next phase (A6) adds year-by-year comparisons and industry-by-year controls to narrow this.
-* **Some small groups are hidden.** BLS suppresses 9-14% of occupation-industry cells each year for confidentiality, so the smallest groups are under-represented.
+* **Direction: moderate. Size: provisional.** The employment gap holds across five checks: two-group test, rank-based test, occupation-level resampling, occupation-level permutation, and regression with industry controls. A "before-period" check (2021 vs 2022) shows no gap, which supports the comparison, though that check is imprecise.
+* **Not a causal estimate.** Other 2023-24 shocks that hit exposed occupations harder (interest rates, the tech-hiring slowdown) could explain part of the gap. Comparing within industries removes industry-wide shocks but not occupation-specific ones. `docs/A5_RESEARCH_DESIGN.md` §5 lists the assumptions a causal claim would need.
+* **Coverage.** BLS withholds 9-14% of occupation-industry cells each year for confidentiality or reliability. Results describe the cells BLS publishes.
+* **Sensitivity.** When the first year (May 2021, which used an older industry coding) is dropped, the gap stays significant but its range now reaches inside the 1-point bar.
+
+## What these data cannot tell you
+
+Whether employers adopted GenAI; whether slower growth came from fewer hires or more departures (BLS reports headcount, not flows); what happened to individual workers; hours, bonuses or benefits; or regional and firm-level patterns.
 
 ## Next steps
 
-1. Load the real BLS files and refresh all results (one command each).
-2. A6: estimate the full model from the A3 proposal (occupation-by-industry and industry-by-year controls, standard errors grouped by occupation), year-by-year effects with 2022 as the reference, and the analyst-versus-clerk comparison.
-3. A7: turn Figures 4, 5 and 9 into an interactive dashboard for finance-workforce readers.
+1. **Real data:** run the pipeline on the licensed files, verify input checksums, commit only the aggregate outputs and run log.
+2. **A6 model:** the A3 specification (occupation-by-industry and industry-by-year controls, errors grouped by occupation), year-by-year estimates with 2022 as reference, a version timed by the share of post-ChatGPT survey rounds, and the analyst-vs-clerk comparison.
+3. **A7 dashboard:** interactive versions of Figures 4, 9 and 11 for finance-workforce readers.
 
-*Figures: `reports/figures/`. Full analysis: `notebooks/02_eda.ipynb`. Method: `docs/EDA_METHODOLOGY.md`.*
+*Full analysis: `notebooks/02_eda.ipynb` · Figures: `reports/figures/` · Method: `docs/EDA_METHODOLOGY.md` · Design notes: `docs/A5_RESEARCH_DESIGN.md`*

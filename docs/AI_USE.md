@@ -55,11 +55,11 @@ my own project conventions before submitting.
 
 **Tool:** Claude (Anthropic), October 2026.
 
-**What the AI produced:** a first draft of the `src/oews_eda/` package (data-quality gate, descriptive functions, hypothesis tests with assumption checks, cluster-robust OLS, figure functions, `run_all` runner and CLI), `tests/test_eda.py`, `notebooks/02_eda.ipynb` and its builder script, and first drafts of `docs/EDA_METHODOLOGY.md`, `docs/A5_EXECUTIVE_SUMMARY.md` and `docs/A5_EVIDENCE_MAP.md`. All of it was built on my A3 research design and my A4 database.
+**What the AI produced:** a first draft of the `src/oews_eda/` package (data-quality gate, descriptive functions, hypothesis tests with assumption checks, cluster-robust OLS, figure functions, `run_all` runner and CLI), `tests/test_eda.py`, `notebooks/02_eda.ipynb` and its builder script, and first drafts of `docs/EDA_METHODOLOGY.md`, `docs/A5_RESEARCH_DESIGN.md`, `docs/A5_EXECUTIVE_SUMMARY.md`, `docs/A5_EVIDENCE_MAP.md` and the full-data verification section of `docs/DATA_ACCESS.md`. It also looked up the OEWS technical notes (pooled panels, MB3, SOC/NAICS versions) used in the design notes, and reworded the duplicate-row text in the A4 quality report in response to the A4 feedback. All of it was built on my A3 research design and my A4 database.
 
-**What is mine:** the research question, hypotheses (one-sided employment H1, two-sided wages), unit of analysis, pre/post timing and delayed-post robustness check, the decision to cluster by occupation, and the descriptive-only analyst-vs-clerk contrast, all carried over from A3 and A4. I decided which findings go in the executive summary and how they are framed for stakeholders.
+**What is mine:** the research question, hypotheses (one-sided employment H1, two-sided wages), unit of analysis, pre/post timing and delayed-post robustness check, the decision to cluster by occupation, and the descriptive-only analyst-vs-clerk contrast, all carried over from A3 and A4. I decided which findings go in the executive summary and how they are framed for stakeholders, and directed the changes made in response to the A4 feedback (within-industry comparison group, event timing, practical-significance threshold, verification path).
 
-**Verification:** I ran `uv sync`, `uv run oews-pipeline run`, `uv run oews-eda`, and `uv run pytest -q` locally, re-ran the notebook, and reviewed the figures, test results and interpretations. All reported numbers come from the synthetic sample and are labeled as such.
+**Verification:** I ran `uv sync`, `uv run oews-pipeline run`, `uv run oews-eda`, `uv run oews-eda --verify-against reports/eda/eda_run_log.json`, and `uv run pytest -q` locally, re-ran the notebook, and reviewed the figures, test results and interpretations. All reported numbers come from the synthetic sample and are labeled as such.
 
 ---
 

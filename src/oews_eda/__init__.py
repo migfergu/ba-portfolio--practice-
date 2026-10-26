@@ -19,7 +19,8 @@ inference  hypothesis tests, assumption checks, effect sizes, cluster-robust OLS
 plots      publication-quality static Matplotlib/Seaborn figures (colorblind-safe)
 report     one-call runner that writes all figures, tables and a JSON summary
 """
-from . import data, describe, inference, plots, report  # noqa: F401
+__version__ = "0.2.0"
+
+from . import data, describe, inference, plots, report  # noqa: E402,F401
 
 __all__ = ["data", "describe", "inference", "plots", "report"]
-__version__ = "0.1.0"

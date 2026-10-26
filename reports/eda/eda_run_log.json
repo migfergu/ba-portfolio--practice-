@@ -1,0 +1,73 @@
+{
+  "generated_at_utc": "2026-10-26T01:20:45+00:00",
+  "source_mode": "sample",
+  "etl_run_id": 1,
+  "code_commit": "5027e91c73bb215fb7ee0d6aa8465a7b5ff74592",
+  "versions": {
+    "oews_eda": "0.2.0",
+    "python": "3.13.17",
+    "pandas": "3.0.5",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2"
+  },
+  "inputs": [
+    {
+      "source_name": "exposure",
+      "file_name": "eloundou_occ_level_sample.csv",
+      "version": "synthetic sample mirroring openai/GPTs-are-GPTs occ_level.csv layout",
+      "sha256": "88491485e46254183fd3e0e4ecc0bd726a88038631fcb0f1a90da06834f226db",
+      "size_bytes": 2067,
+      "rows_read": 25
+    },
+    {
+      "source_name": "job_zones",
+      "file_name": "onet_job_zones_sample.txt",
+      "version": "synthetic sample mirroring O*NET 27.0 Job Zones.txt layout",
+      "sha256": "d89461327eb9b7997d4ea06f54a308e0a4adce84df2d80a778588b1307020816",
+      "size_bytes": 1245,
+      "rows_read": 20
+    },
+    {
+      "source_name": "oews_2021",
+      "file_name": "oews_nat4d_M2021_sample.csv",
+      "version": "OEWS May 2021 national industry-specific",
+      "sha256": "a95e408abd0d45f3b85fbb8740a3cdbdfa779b6cbc5075a644f971d1a8da7ddc",
+      "size_bytes": 23211,
+      "rows_read": 151
+    },
+    {
+      "source_name": "oews_2022",
+      "file_name": "oews_nat4d_M2022_sample.csv",
+      "version": "OEWS May 2022 national industry-specific",
+      "sha256": "689014baac2bfd70866435f1ca28b10c7eb23da7a5a94a2e3280eb32b9cf0ca1",
+      "size_bytes": 23394,
+      "rows_read": 152
+    },
+    {
+      "source_name": "oews_2023",
+      "file_name": "oews_nat4d_M2023_sample.csv",
+      "version": "OEWS May 2023 national industry-specific",
+      "sha256": "e23c3600aacc4cd33dbd5184f009e43cfc53acc129be0d726e8bf727f93db3e9",
+      "size_bytes": 23316,
+      "rows_read": 152
+    },
+    {
+      "source_name": "oews_2024",
+      "file_name": "oews_nat4d_M2024_sample.csv",
+      "version": "OEWS May 2024 national industry-specific",
+      "sha256": "d7bc33a30a659f759d065aa15078606beede38642cd2fd87a4449dec0695ce67",
+      "size_bytes": 23245,
+      "rows_read": 151
+    },
+    {
+      "source_name": "oews_2025",
+      "file_name": "oews_nat4d_M2025_sample.csv",
+      "version": "OEWS May 2025 national industry-specific",
+      "sha256": "435a862f3321d8bde82b735167e5f3d2cd7e74a5623991714496bc280d58749b",
+      "size_bytes": 23227,
+      "rows_read": 151
+    }
+  ]
+}
