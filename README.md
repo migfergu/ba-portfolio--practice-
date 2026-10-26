@@ -166,7 +166,7 @@ Reusable EDA package `src/oews_eda/` on top of the A4 database: row definition a
 uv sync
 uv run oews-pipeline run   # build the database (sample; --source raw for real data)
 uv run oews-eda            # regenerate reports/figures/*.png and reports/eda/*
-uv run pytest -q           # 19 tests (8 A4 + 11 A5)
+uv run pytest -q           # 22 tests (11 A4 + 11 A5)
 uv run oews-eda --verify-against reports/eda/eda_run_log.json   # input SHA-256 check
 ```
 

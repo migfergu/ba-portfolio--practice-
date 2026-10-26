@@ -7,7 +7,7 @@ uv sync                         # installs matplotlib, seaborn, scipy (added for
 uv run oews-pipeline run        # A4: build data/processed/oews_genai.db (sample) - or --source raw
 uv run oews-eda                 # A5: all figures, tables, tests -> reports/figures, reports/eda
 uv run jupyter lab notebooks/02_eda.ipynb   # walkthrough; "Run All" reproduces the committed outputs
-uv run pytest -q                # 8 A4 tests + 11 A5 tests
+uv run pytest -q                # 22 tests: 11 A4 + 11 A5
 uv run oews-eda --verify-against reports/eda/eda_run_log.json   # input checksum check
 ```
 
