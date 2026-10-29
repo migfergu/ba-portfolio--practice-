@@ -69,8 +69,28 @@ def _fmt_int(x: int, rng) -> str:
     return f"{x:,}" if rng.random() < 0.3 else str(x)       # some comma-formatted like BLS CSV exports
 
 
-def generate(out_dir: Path = SAMPLE_DIR, seed: int = 751) -> list[Path]:
-    """Write the seeded synthetic OEWS, exposure, and Job Zone files to out_dir; return their paths."""
+# Planted employment effect (the "known answer" the EDA and model must recover).
+# Post-ChatGPT years scale employment by 1 - EFFECT_SLOPE * (exposure - EFFECT_CENTER) * (year - 2022).
+EFFECT_SLOPE = 0.06
+EFFECT_CENTER = 0.6
+EMP_NOISE_SD = 0.03
+
+
+def planted_effect(exposure: float, year: int, slope: float | None = None) -> float:
+    """Multiplicative employment effect the generator plants (1.0 before 2023). No wage effect is planted."""
+    a = EFFECT_SLOPE if slope is None else slope
+    return 1 - a * (exposure - EFFECT_CENTER) * (year - 2022) if year >= 2023 else 1.0
+
+
+def generate(out_dir: Path = SAMPLE_DIR, seed: int = 751, emp_noise_sd: float = EMP_NOISE_SD,
+             effect_slope: float = EFFECT_SLOPE) -> list[Path]:
+    """Write the seeded synthetic OEWS, exposure, and Job Zone files to out_dir; return their paths.
+
+    ``emp_noise_sd`` is the cell-level employment noise. Setting it to 0 gives a noise-free panel
+    (the random stream is consumed identically, so every other value is unchanged); known-answer
+    tests use that to separate code defects from sampling noise. ``effect_slope=0`` plants no effect
+    (used to measure the false-positive rate of the A6 inference methods).
+    """
     rng = np.random.default_rng(seed)
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -81,7 +101,6 @@ def generate(out_dir: Path = SAMPLE_DIR, seed: int = 751) -> list[Path]:
     written = []
 
     for year in YEARS:
-        post = year >= 2023
         rows = []
         for naics, ntitle in INDUSTRIES:
             ind_total = 0
@@ -89,8 +108,8 @@ def generate(out_dir: Path = SAMPLE_DIR, seed: int = 751) -> list[Path]:
                 if not presence[(soc, naics)]:
                     continue
                 trend = 1.02 ** (year - 2021)
-                effect = (1 - 0.06 * (exp_g - 0.6) * (year - 2022)) if post else 1.0
-                emp = max(30, int(base_emp[(soc, naics)] * trend * effect * rng.normal(1, 0.03)))
+                effect = planted_effect(exp_g, year, effect_slope)
+                emp = max(30, int(base_emp[(soc, naics)] * trend * effect * rng.normal(1, emp_noise_sd)))
                 ind_total += emp
                 a_mean = round(wage * WAGE_PREMIUM.get(naics, 1.0) * (1.035 ** (year - 2021)) * rng.normal(1, 0.04), -1)
                 emp_s = _fmt_int(emp, rng)

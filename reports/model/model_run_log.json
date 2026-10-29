@@ -1,0 +1,117 @@
+{
+  "generated_at_utc": "2026-10-29T11:19:36+00:00",
+  "source_mode": "sample",
+  "etl_run_id": 1,
+  "code_commit": "49d67144fb7cfc8399f2d50f5625eec2d2459ef2",
+  "versions": {
+    "oews_eda": "0.2.0",
+    "python": "3.13.18",
+    "pandas": "3.0.5",
+    "numpy": "2.5.3",
+    "scipy": "1.18.1",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "oews_model": "0.6.0"
+  },
+  "inputs": [
+    {
+      "source_name": "exposure",
+      "file_name": "eloundou_occ_level_sample.csv",
+      "version": "synthetic sample mirroring openai/GPTs-are-GPTs occ_level.csv layout",
+      "sha256": "88491485e46254183fd3e0e4ecc0bd726a88038631fcb0f1a90da06834f226db",
+      "size_bytes": 2067,
+      "rows_read": 25
+    },
+    {
+      "source_name": "job_zones",
+      "file_name": "onet_job_zones_sample.txt",
+      "version": "synthetic sample mirroring O*NET 27.0 Job Zones.txt layout",
+      "sha256": "d89461327eb9b7997d4ea06f54a308e0a4adce84df2d80a778588b1307020816",
+      "size_bytes": 1245,
+      "rows_read": 20
+    },
+    {
+      "source_name": "oews_2021",
+      "file_name": "oews_nat4d_M2021_sample.csv",
+      "version": "OEWS May 2021 national industry-specific",
+      "sha256": "a95e408abd0d45f3b85fbb8740a3cdbdfa779b6cbc5075a644f971d1a8da7ddc",
+      "size_bytes": 23211,
+      "rows_read": 151
+    },
+    {
+      "source_name": "oews_2022",
+      "file_name": "oews_nat4d_M2022_sample.csv",
+      "version": "OEWS May 2022 national industry-specific",
+      "sha256": "689014baac2bfd70866435f1ca28b10c7eb23da7a5a94a2e3280eb32b9cf0ca1",
+      "size_bytes": 23394,
+      "rows_read": 152
+    },
+    {
+      "source_name": "oews_2023",
+      "file_name": "oews_nat4d_M2023_sample.csv",
+      "version": "OEWS May 2023 national industry-specific",
+      "sha256": "e23c3600aacc4cd33dbd5184f009e43cfc53acc129be0d726e8bf727f93db3e9",
+      "size_bytes": 23316,
+      "rows_read": 152
+    },
+    {
+      "source_name": "oews_2024",
+      "file_name": "oews_nat4d_M2024_sample.csv",
+      "version": "OEWS May 2024 national industry-specific",
+      "sha256": "d7bc33a30a659f759d065aa15078606beede38642cd2fd87a4449dec0695ce67",
+      "size_bytes": 23245,
+      "rows_read": 151
+    },
+    {
+      "source_name": "oews_2025",
+      "file_name": "oews_nat4d_M2025_sample.csv",
+      "version": "OEWS May 2025 national industry-specific",
+      "sha256": "435a862f3321d8bde82b735167e5f3d2cd7e74a5623991714496bc280d58749b",
+      "size_bytes": 23227,
+      "rows_read": 151
+    }
+  ],
+  "command": "uv run oews-model",
+  "outputs": [
+    {
+      "file": "reports/model/specifications_emp.csv",
+      "sha256": "a38525722ab96954f6dcfc7c153808cf2903737d393e734c9ac6d777da531667"
+    },
+    {
+      "file": "reports/model/event_study_emp.csv",
+      "sha256": "f99811929d422cb5b022e197472fa4e84948b6f8d256f8429e68a5cb46e7c495"
+    },
+    {
+      "file": "reports/model/specifications_wage.csv",
+      "sha256": "eb0f2ce733d07f5a42641b3e0baf20c80471a9e5c6ca5d5de5602449e48dc521"
+    },
+    {
+      "file": "reports/model/event_study_wage.csv",
+      "sha256": "932bf8d095f2402eeab6ff0e39aaba91c8af74fd6dd32d89f3c51f6f89391d31"
+    },
+    {
+      "file": "reports/model/leave_one_out.csv",
+      "sha256": "1dcf5a110e64bd5bdd04268b376cb8c5a53a8bf846a6e13b86efca272b9ccf3c"
+    },
+    {
+      "file": "reports/model/finance_contrast.csv",
+      "sha256": "e7c0f0e0b9a62fce323550886b79badd1bb2d64589c7985e83fecfd9eac99353"
+    },
+    {
+      "file": "reports/model/known_answer_eda.csv",
+      "sha256": "4707e8adc89f7f74a1b670f9c9789af90bcfedbaa1d3f90da43f317ce788ac03"
+    },
+    {
+      "file": "reports/model/known_answer_seeds.csv",
+      "sha256": "c37f25dcdf13f3f5470fe6bcd6c02a0ca47e1c8d89eba78d75efdb7f7b7d20c5"
+    },
+    {
+      "file": "reports/model/model_recovery.csv",
+      "sha256": "e725d23b28c1e7d12285f7c220e244c97f2f7c7b61d9f44e17f0a34fbb140d4e"
+    },
+    {
+      "file": "reports/model/model_summary.json",
+      "sha256": "64990093681feca8d92f7c6b310d4935338afd0e8c7d6b3f1bef046dd45399c0"
+    }
+  ]
+}

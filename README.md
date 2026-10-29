@@ -143,7 +143,7 @@ cd migfergu-ba-portfolio-practice
 uv sync                           # install dependencies from uv.lock
 uv run oews-pipeline run          # build data/processed/oews_genai.db from the synthetic sample
 uv run oews-pipeline rerun-check  # run twice, prove no duplicates -> docs/RERUN_CHECK.md
-uv run pytest -q                  # 8 tests
+uv run pytest -q                  # A4 tests (the full suite now has more; see below)
 ```
 
 Using the real data instead of the sample: see [docs/DATA_ACCESS.md](docs/DATA_ACCESS.md), then run `uv run oews-pipeline run --source raw`.
@@ -166,7 +166,7 @@ Reusable EDA package `src/oews_eda/` on top of the A4 database: row definition a
 uv sync
 uv run oews-pipeline run   # build the database (sample; --source raw for real data)
 uv run oews-eda            # regenerate reports/figures/*.png and reports/eda/*
-uv run pytest -q           # 22 tests (11 A4 + 11 A5)
+uv run pytest -q           # 42 tests in total (A4, A5, known-answer, A6)
 uv run oews-eda --verify-against reports/eda/eda_run_log.json   # input SHA-256 check
 ```
 
@@ -175,3 +175,25 @@ uv run oews-eda --verify-against reports/eda/eda_run_log.json   # input SHA-256 
 - [Methodology and code documentation](docs/EDA_METHODOLOGY.md)
 - [Research-design notes answering the A4 feedback](docs/A5_RESEARCH_DESIGN.md)
 - [Rubric evidence map](docs/A5_EVIDENCE_MAP.md)
+
+## Assignment 6: Analytics Engine & Modeling
+
+Importable package `src/oews_model/` that estimates the A3 specification, log Y = cell FE + industry-by-year FE + β·(exposure × post), on the A4 database through the A5 loader. It reports CR1, wild-cluster-bootstrap and randomization inference for 19 occupation clusters; compares the model with pooled OLS and cell + year FE; and runs an event study (2022 = 0), timing, sample, placebo and leave-one-out checks, the wage outcome, and the descriptive analyst/clerk contrast. It also validates the code against the synthetic generator's known answer (noise-free recovery with pinned tolerances, mutation tests, 200-seed sampling bands) and calibrates the inference by Monte Carlo.
+
+> Committed results are from the **synthetic sample** (planted employment effect, no wage effect, no OEWS pooling). They test the method, not the labor market.
+
+```powershell
+uv sync --extra dev
+uv run oews-pipeline run                 # A4 database
+uv run oews-model                        # estimates, robustness, validation, fig12-14 (~3-4 min)
+uv run oews-model simulate               # Monte Carlo calibration tables (~5 min)
+uv run pytest -q                         # 42 tests
+uv run oews-model --verify-against reports/model/model_run_log.json
+```
+
+- [Method](docs/A6_METHOD.md) (estimand, unit, specification, uncertainty, interface)
+- [Evaluation report](docs/A6_EVALUATION_REPORT.md) (known-answer validation, Monte Carlo, comparison, diagnostics, robustness)
+- [Research interpretation](docs/A6_INTERPRETATION.md) (magnitude, inferential boundary, limitations)
+- [Analysis notebook](notebooks/03_model.ipynb) (imports `oews_model`)
+- [Rubric evidence map](docs/A6_EVIDENCE_MAP.md)
+- Result artifacts for the A7 dashboard: `reports/model/`

@@ -61,6 +61,16 @@ my own project conventions before submitting.
 
 **Verification:** I ran `uv sync`, `uv run oews-pipeline run`, `uv run oews-eda`, `uv run oews-eda --verify-against reports/eda/eda_run_log.json`, and `uv run pytest -q` locally, re-ran the notebook, and reviewed the figures, test results and interpretations. All reported numbers come from the synthetic sample and are labeled as such.
 
+## Assignment 6: Analytics Engine & Modeling
+
+**Tool:** Claude (Anthropic), October 2026.
+
+**What the AI produced:** a first draft of the `src/oews_model/` package (fixed-effect absorption and CR1 inference, wild cluster restricted bootstrap, randomization inference, specification suite, event study, leave-one-out, finance contrast, Monte Carlo validation, figures, `run_all` runner and CLI), `src/oews_eda/known_answer.py`, the noise and effect-size parameters added to the synthetic generator, `tests/test_model.py` and `tests/test_known_answer.py` (including the mutation tests), `notebooks/03_model.ipynb` and its builder, and first drafts of `docs/A6_METHOD.md`, `docs/A6_EVALUATION_REPORT.md`, `docs/A6_INTERPRETATION.md` and `docs/A6_EVIDENCE_MAP.md`. In response to the A5 feedback it also traced the 2023 event-time result (noise-free runs and a 200-seed distribution), reworded the A5 executive summary, research-design notes and notebook so that synthetic results are not attributed to OEWS pooling, fixed the fig11 label overlap and the README test count, and removed the duplicated dev dependencies.
+
+**What is mine:** the research question, estimand, unit of analysis, fixed-effect specification, occupation clustering, hypotheses (one-sided employment, two-sided wages), delayed-post and event-time robustness plan, and the descriptive-only analyst-vs-clerk contrast, all carried over from A3-A5, and the decision to address every A5 feedback item before building A6. _[Ferg: add the choices you made or changed while reviewing this draft.]_
+
+**Verification:** _[Ferg: list what you ran locally, e.g. `uv sync --extra dev`, `uv run oews-pipeline run`, `uv run oews-eda`, `uv run oews-model`, `uv run oews-model simulate`, `uv run pytest -q`, the notebook, and the outputs you reviewed.]_ All reported numbers come from the synthetic sample and are labeled as such.
+
 ---
 
 _Update this file as AI assistance is used in future assignments - add a

@@ -1,0 +1,69 @@
+{
+  "source_mode": "sample",
+  "estimand": "beta: differential change in log outcome after 2022 per 1 SD of occupation GenAI exposure, within occupation-by-industry cells and net of industry-by-year shocks",
+  "panel": {
+    "rows": 572,
+    "cells": 124,
+    "occupation_clusters": 19,
+    "sd_exposure_share": 0.25735610298318173,
+    "iqr_z": 0.7965616421126678,
+    "n_occupations": 19
+  },
+  "main": {
+    "emp": {
+      "coef": -0.026186936542603557,
+      "se_cr1": 0.003673813198260025,
+      "p_cr1": 1.2173067284194814e-06,
+      "ci_low_cr1": -0.033905331662556465,
+      "ci_high_cr1": -0.018468541422650652,
+      "pct_effect": -2.5847032201098408,
+      "p_wcr": 0.0008000800080008001,
+      "p_wcr_lower": 0.0006000600060006001,
+      "ci_low_wcr": -0.04027351221609551,
+      "ci_high_wcr": -0.01620604444211826,
+      "practical_verdict": "practically meaningful",
+      "p_ri": 0.0002,
+      "p_ri_lower": 0.0002
+    },
+    "wage": {
+      "coef": 0.001219908563458533,
+      "se_cr1": 0.0018178198908374668,
+      "p_cr1": 0.5106881007301372,
+      "ci_low_cr1": -0.002599189310390459,
+      "ci_high_cr1": 0.005039006437307525,
+      "pct_effect": 0.12206529545757405,
+      "p_wcr": 0.48774877487748775,
+      "p_wcr_lower": 0.7556755675567557,
+      "ci_low_wcr": -0.005214190824945404,
+      "ci_high_wcr": 0.0051922289151253055,
+      "practical_verdict": "negligible (inside the bar)",
+      "p_ri": 0.7176,
+      "p_ri_lower": 0.6096
+    }
+  },
+  "iqr_move_pct_emp": -2.0643454485439916,
+  "pretrend_2021_emp": {
+    "coef": 0.004950562988829338,
+    "ci_low_wcr": -0.005196830372309953,
+    "ci_high_wcr": 0.011324293785354485,
+    "p_wcr": 0.27992799279927993
+  },
+  "robustness_range_emp": [
+    -0.05344495894659918,
+    -0.023885512172439834
+  ],
+  "leave_one_out_range_emp": [
+    -0.028733927855315027,
+    -0.023074161717033914
+  ],
+  "validation": {
+    "eda_code_pass": true,
+    "eda_sampling_pass": true,
+    "model_recovery_pass": true,
+    "gap_2023_seed751_pctile": 99.5
+  },
+  "inference_draws": {
+    "wild_bootstrap_B": 9999,
+    "permutations": 4999
+  }
+}

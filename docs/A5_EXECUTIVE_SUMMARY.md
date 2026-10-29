@@ -12,12 +12,12 @@ After ChatGPT's release in November 2022, did occupations whose tasks GenAI *cou
 
 ## Bottom line
 
-**On the sample, employment in highly exposed occupations grew about 2.7 percentage points less than in less-exposed occupations in the same industries after 2022, a gap large enough to matter for workforce plans. Average pay showed no detectable difference, though a small pay gap cannot yet be ruled out.**
+**On the sample, employment in highly exposed occupations grew about 2.7 percentage points less than in less-exposed occupations in the same industries after 2022, and average pay showed no detectable difference. Both results are what the test data were built to contain; whether a gap of this kind exists in the real labor market is for the authorized real-data run to show.**
 
 ## What the analysis shows (sample run)
 
 1. **Slower employment growth in exposed occupations.** Within the same industry, employment in high-exposure occupations grew about 2.7 points less than in low-exposure occupations between 2021-22 and 2023-25 (Figures 4 and 8). The gap clears our pre-set bar of 1 point for "large enough to matter": its whole uncertainty range is −4.4 to −1.3 points. Controls for job preparation and starting pay do not remove it (Figure 7).
-2. **The gap shows up as post-ChatGPT survey data accumulate.** Each BLS May estimate blends six survey rounds from three years, so May 2023 contains only one round collected after ChatGPT. Correspondingly, the gap is about zero in 2023, −2.4 points in 2024 and −5.3 points in 2025 (Figure 11). This timing is what BLS's data construction alone would produce, so it should not be read as proof that adoption is speeding up.
+2. **On the sample, the gap grows with time since 2022, by construction.** The gap is about zero in 2023, −2.4 points in 2024 and −5.3 points in 2025 (Figure 11). The test data plant an effect that grows by the same step each year and do not imitate how BLS builds its estimates, so this pattern describes the test data, not the labor market. (The near-zero 2023 value is an unusual random draw; A6 shows the code recovers the planted 2023 effect exactly when the noise is switched off.) *What this point will say once real data arrive:* each BLS May estimate blends six survey rounds from three years, and only one round in May 2023 post-dates ChatGPT, so a gap that grows in step with the post-ChatGPT share is what BLS's data construction alone would produce and should not be read as proof that adoption is speeding up.
 3. **No detectable pay difference.** Average annual pay rose about 8.5% in both groups. The uncertainty range (about −1.2 to +1.0 points) still includes a 1-point gap in either direction, so the right reading is "no pay difference detected yet", not "pay is unaffected".
 4. **Exposure is its own dimension.** An occupation's exposure is almost unrelated to how much preparation it requires or how well it pays (Figure 6). High-skill or high-pay roles are not automatically low-exposure.
 5. **Analysts vs. clerks.** Both focal roles are at the high-exposure end. With only two or three comparable industries each, Figure 9 is context only; the formal comparison comes in A6.
@@ -26,7 +26,7 @@ After ChatGPT's release in November 2022, did occupations whose tasks GenAI *cou
 
 | Audience | Action now | Revisit when |
 |---|---|---|
-| Finance workforce planners | Treat exposure as a planning variable. Build a scenario with ~2-3 points slower headcount growth for highly exposed roles (analysts, accountants, data entry, developers) next to the baseline plan, rather than assuming either no change or job losses. | The real-data run confirms or rejects the sample-size gap |
+| Finance workforce planners | Treat exposure as a planning variable. Once the real-data estimate is in, size a slower-headcount-growth scenario for highly exposed roles (analysts, accountants, data entry, developers) from it, next to the baseline plan, rather than assuming either no change or job losses. The sample's ~2-3 point figure comes from the planted test effect and is not a planning number. | The authorized real-data run |
 | Talent and L&D leaders | Prioritize reskilling in exposed roles toward their less-exposed tasks; this holds whatever the eventual cause of the gap. | A6 shows whether preparation level changes the gap |
 | Compensation teams | Do not apply a GenAI discount to pay benchmarks; no pay difference is detected. Keep monitoring, since a ~1-point difference is not ruled out. | The May 2026 release adds data |
 | Program and policy readers | Monitor exposed occupations as a group across skill and pay bands. | Each new BLS release |

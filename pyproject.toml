@@ -26,22 +26,17 @@ dev = [
     "ruff>=0.5.0",
 ]
 
-[dependency-groups]
-dev = [
-    "pytest>=8.0.0",
-    "ruff>=0.5.0",
-]
-
 [project.scripts]
 oews-pipeline = "oews_pipeline.cli:main"
 oews-eda = "oews_eda.__main__:main"
+oews-model = "oews_model.__main__:main"
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src", "src/oews_pipeline", "src/oews_eda"]
+packages = ["src", "src/oews_pipeline", "src/oews_eda", "src/oews_model"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

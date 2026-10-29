@@ -195,7 +195,7 @@ for name, t in (("Delayed post (2024+)", t_del), ("Excluding May 2021 (2017 NAIC
     print(f"{name:34s} gap {t.diff_pct_points:+.2f}%, p = {t.p_value:.1e}, cluster CI (pp) "
           f"[{t.cluster_ci_low*100:.2f}, {t.cluster_ci_high*100:.2f}] -> {t.decision}; {t.practical_verdict}")"""),
 (MD, """**Interpretation.**
-* The gap is about 0 in 2023 (1/6 post panels), −2.4 pp in 2024 (3/6) and −5.3 pp in 2025 (5/6), and the delayed-post test gives a larger gap (≈ −3.9 pp). This matches the share of post-ChatGPT survey data, so the build-up is **not by itself evidence of gradual adoption**; pooling alone would produce it. A6 will use event-time coefficients and a panel-share timing variable rather than a single post dummy.
+* On the sample the gap is about 0 in 2023, −2.4 pp in 2024 and −5.3 pp in 2025, and the delayed-post test gives a larger gap (≈ −3.9 pp). **These values describe the synthetic generator, not OEWS pooling:** the generator plants an effect proportional to (year − 2022) and does not simulate pooled survey panels, so the build-up here is the planted ramp plus noise. The near-zero 2023 value is an unusual seed draw (about 1 in 200), not a code defect: on noise-free data the code recovers the planted 2023 gap (`docs/A6_EVALUATION_REPORT.md` §1). With real data, compare the timing against the post-ChatGPT panel share printed under each year: a gap that tracks that share is what pooling alone would produce and is not by itself evidence of gradual adoption. A6 reports event-time coefficients and a panel-share timing specification.
 * Dropping May 2021 (the only 2017-NAICS release) keeps a significant gap (≈ −2.5 pp), but its CI now reaches inside the 1-point band (*detectable, size uncertain*). The NAICS change is a sensitivity to carry into A6."""),
 (MD, """### 5.4 Placebo: 2021 → 2022 (both pre-ChatGPT)
 
@@ -230,7 +230,7 @@ plots.plot_focal_contrast(contrast, FIG / "fig09_analyst_vs_clerk.png", panel.at
 | # | Finding (sample run; known-answer test) | Business implication (if the real data agree) | Implication for A6 |
 |---|---|---|---|
 | 1 | Within industry, employment in high-exposure cells grew ~2.7 pp less; practically meaningful (CI beyond ±1 pp); survives controls, clustering and nonparametric checks | Plan a slower-headcount-growth scenario for exposed roles alongside the baseline | Expect negative β on employment; keep occupation-clustered SEs and industry-by-year FE |
-| 2 | Gap appears as post-ChatGPT survey panels accumulate (0 → −2.4 → −5.3 pp) | Early OEWS releases understate any change; revisit with each release | Event-time coefficients and a panel-share timing variable, not a single post dummy |
+| 2 | On the sample the gap grows with event time (≈0 → −2.4 → −5.3 pp); this is the generator's planted ramp, not a pooling result | With real data, check the timing against the post-ChatGPT panel share before reading it as adoption speed; revisit with each release | Event-time coefficients and a panel-share timing variable, not a single post dummy |
 | 3 | No detectable wage gap, but ±1 pp not ruled out | No GenAI pay discount is justified; keep monitoring | Wage stays two-sided; report CIs against the 1-pp band |
 | 4 | Placebo 2021 → 2022 shows no gap (wide CI) | The high-vs-low comparison is credible but not proven | Formal pre-period coefficients; note only two pre years |
 | 5 | Exposure is nearly uncorrelated with preparation and pay | Exposure is a separate planning dimension from skill or pay band | Job Zone as moderator, not confounder; VIFs < 5 |

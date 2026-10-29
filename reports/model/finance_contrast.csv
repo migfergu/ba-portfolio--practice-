@@ -1,0 +1,7 @@
+term,role,coef,pct_effect,outcome,inference
+analyst_post,Financial & investment analysts (13-2051),0.007000523511332782,0.7025084455754671,log_emp,"descriptive: one occupation per role, no cluster SE"
+clerk_post,"Bookkeeping, accounting & auditing clerks (43-3031)",0.015123245175671478,1.5238180113476218,log_emp,"descriptive: one occupation per role, no cluster SE"
+exp_post,"Exposure x post, holding the two roles' own deviations out",-0.027243171145371694,-2.6875423067458937,log_emp,"descriptive: one occupation per role, no cluster SE"
+analyst_post,Financial & investment analysts (13-2051),0.0020252250671449357,0.20272772205549572,log_wage,"descriptive: one occupation per role, no cluster SE"
+clerk_post,"Bookkeeping, accounting & auditing clerks (43-3031)",-0.012686035970769498,-1.2605907412274742,log_wage,"descriptive: one occupation per role, no cluster SE"
+exp_post,"Exposure x post, holding the two roles' own deviations out",0.001795060251331847,0.17966723364370996,log_wage,"descriptive: one occupation per role, no cluster SE"

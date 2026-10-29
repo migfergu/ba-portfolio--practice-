@@ -329,8 +329,10 @@ def plot_event_time_gaps(gaps: pd.DataFrame, vintage: pd.DataFrame, path=None, s
     ax.set_xticks(ticks)
     ax.set_xticklabels([f"{y}\n{vintage.loc[y, 'post_chatgpt_panels']}/6 panels post" if y in vintage.index else str(y)
                         for y in ticks])
-    ax.set(title=f"The {outcome_label} gap opens as more post-ChatGPT survey panels enter the estimates",
-           xlabel="May reference year, and how many of its 6 pooled survey panels post-date ChatGPT (2022 = 0)",
-           ylabel=f"Gap in change in log {outcome_label} since 2022 (x100)")
+    # Title describes the pattern only: on the synthetic sample the ramp is planted by the generator,
+    # which does not simulate OEWS panel pooling, so the title must not attribute it to pooling.
+    ax.set_title(f"High- vs low-exposure gap in {outcome_label} change since 2022, by year", pad=14)
+    ax.set(xlabel="May reference year, and how many of its 6 pooled survey panels post-date ChatGPT (2022 = 0)",
+           ylabel="High - Low, log points x100")
     ax.legend(loc="upper right", fontsize=9)
     return _finish(fig, path, source_mode, foot_y=-0.06)
