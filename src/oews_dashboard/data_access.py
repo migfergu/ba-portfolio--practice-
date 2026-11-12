@@ -89,7 +89,13 @@ def naics4(code: str) -> str:
 
 
 def _sha256(path: Path) -> str:
-    return hashlib.sha256(path.read_bytes()).hexdigest()
+    """SHA-256 of a result file with line endings normalized to LF.
+
+    The run log records hashes of the LF files written by ``oews-model``. Git on Windows (core.autocrlf)
+    checks text files out with CRLF, which would change the raw hash without changing any value, so
+    CRLF is folded back to LF before hashing. Any edit to the content still changes the hash.
+    """
+    return hashlib.sha256(path.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
 
 
 # ----------------------------------------------------------------- A4 database

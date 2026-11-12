@@ -85,6 +85,16 @@ def test_provenance_flags_edited_artifact(results, db, tmp_path):
     assert not prov.outputs_intact and "specifications_emp.csv" in prov.changed_outputs
 
 
+def test_provenance_ignores_windows_line_endings(results, db, tmp_path):
+    """A Windows checkout (core.autocrlf) turns LF into CRLF; that is not an edit."""
+    copy = tmp_path / "model"
+    shutil.copytree(da.MODEL_DIR, copy)
+    for f in copy.glob("*.csv"):
+        f.write_bytes(f.read_bytes().replace(b"\r\n", b"\n").replace(b"\n", b"\r\n"))
+    prov = da.provenance(da.load_results(copy), db)
+    assert prov.outputs_intact, prov.changed_outputs
+
+
 def test_provenance_without_database(results, tmp_path):
     prov = da.provenance(results, tmp_path / "missing.db")
     assert prov.inputs_match is None and not prov.verified
