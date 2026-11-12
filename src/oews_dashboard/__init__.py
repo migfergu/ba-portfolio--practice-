@@ -11,4 +11,10 @@ ui           Streamlit helpers shared by every page: cached loaders, sidebar con
 
 Launch with ``uv run streamlit run streamlit_app.py`` (see docs/APP_GUIDE.md).
 """
-__version__ = "0.7.0"
+import matplotlib
+
+# Non-interactive backend: figures are rendered to images for Streamlit. Without this, Windows defaults to
+# the Tk GUI backend, which fails when Streamlit (or AppTest) draws from a worker thread.
+matplotlib.use("Agg")
+
+__version__ = "0.7.1"

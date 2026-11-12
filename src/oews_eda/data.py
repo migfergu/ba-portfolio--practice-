@@ -59,6 +59,21 @@ FOCAL_LABELS = {"analyst": "Financial & investment analysts (13-2051)",
                 "clerk_contrast": "Bookkeeping/accounting clerks (43-3031)"}
 
 
+class _ClosingConnection(sqlite3.Connection):
+    """sqlite3 connection that also *closes* when its ``with`` block ends.
+
+    The standard ``with sqlite3.connect(...)`` only commits or rolls back and leaves the file open. On
+    Windows an open handle stops a temporary database from being deleted (WinError 32), which broke the
+    known-answer and Monte Carlo runs that build databases in temporary folders.
+    """
+
+    def __exit__(self, *exc):
+        try:
+            return super().__exit__(*exc)
+        finally:
+            self.close()
+
+
 def connect(db_path: Path | str = DEFAULT_DB) -> sqlite3.Connection:
     """Open a read-only connection to the pipeline database.
 
@@ -76,7 +91,7 @@ def connect(db_path: Path | str = DEFAULT_DB) -> sqlite3.Connection:
         raise FileNotFoundError(
             f"{db_path} not found. Build it first: `uv run oews-pipeline run` "
             "(or `--source raw` for the real files).")
-    return sqlite3.connect(f"file:{db_path.as_posix()}?mode=ro", uri=True)
+    return sqlite3.connect(f"file:{db_path.as_posix()}?mode=ro", uri=True, factory=_ClosingConnection)
 
 
 def source_mode(conn: sqlite3.Connection) -> str:

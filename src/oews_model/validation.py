@@ -47,7 +47,7 @@ def closed_form(d: pd.DataFrame) -> dict[str, float]:
 
 def recovery(work_dir: Path | None = None) -> pd.DataFrame:
     """Noise-free recovery table for the main coefficient and the event-study path."""
-    with tempfile.TemporaryDirectory(dir=work_dir) as tmp:
+    with tempfile.TemporaryDirectory(dir=work_dir, ignore_cleanup_errors=True) as tmp:
         d = A.model_frame(data.load_panel(build_sample_db(Path(tmp), seed=751, emp_noise_sd=0.0)))
     orc = A.model_frame(oracle_panel(d))
     cf = closed_form(d)
@@ -75,7 +75,7 @@ def monte_carlo(seeds: range | list[int], effect_slope: float | None = None, B: 
     a = EFFECT_SLOPE if effect_slope is None else effect_slope
     main_spec = next(s for s in A.specifications() if s.key == "main")
     rows = []
-    with tempfile.TemporaryDirectory(dir=work_dir) as tmp:
+    with tempfile.TemporaryDirectory(dir=work_dir, ignore_cleanup_errors=True) as tmp:
         for seed in seeds:
             out = Path(tmp) / str(seed)
             generate(out, seed=seed, effect_slope=a)

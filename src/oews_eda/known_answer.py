@@ -133,7 +133,7 @@ def known_answer(db_path: Path | str) -> KnownAnswer:
 def seed_distribution(seeds: range | list[int], work_dir: Path | None = None) -> pd.DataFrame:
     """EDA slope and event-time gaps for each generator seed (noisy), one row per seed."""
     rows = []
-    with tempfile.TemporaryDirectory(dir=work_dir) as tmp:
+    with tempfile.TemporaryDirectory(dir=work_dir, ignore_cleanup_errors=True) as tmp:
         for seed in seeds:
             db = build_sample_db(Path(tmp) / str(seed), seed=seed)
             panel = data.load_panel(db)
@@ -152,7 +152,7 @@ def evaluate(committed_db: Path | str = data.DEFAULT_DB, seeds: range | list[int
         estimate, oracle, code tolerance, committed-seed estimate, sampling SD across ``seeds``, the
         committed seed's z-score against the noise-free value, and pass flags.
     """
-    with tempfile.TemporaryDirectory(dir=work_dir) as tmp:
+    with tempfile.TemporaryDirectory(dir=work_dir, ignore_cleanup_errors=True) as tmp:
         clean = known_answer(build_sample_db(Path(tmp), seed=751, emp_noise_sd=0.0))
     committed = known_answer(committed_db)
     dist = seed_distribution(seeds, work_dir)
