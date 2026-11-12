@@ -1,0 +1,25 @@
+# Optional release evidence for Assignment 7: proves the clean-clone path on a fresh Ubuntu runner.
+# Mirrors docs/APP_GUIDE.md exactly. Uses only the committed synthetic sample; no secrets required.
+name: dashboard-clean-clone
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - name: Install locked environment
+        run: uv sync --locked --extra dev
+      - name: Build sample database (A4)
+        run: uv run oews-pipeline run
+      - name: Test suite (A4-A7, includes Streamlit AppTest smoke tests)
+        run: uv run pytest -q
+      - name: Dashboard clean-run check
+        run: uv run oews-dashboard-check --no-write

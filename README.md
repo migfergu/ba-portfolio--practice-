@@ -1,134 +1,54 @@
-# Business Analytics Portfolio
+# Generative AI Exposure and Financial Analyst Employment and Wages
 
-Portfolio repository for business analytics coursework, built around financial
-modeling, forecasting, budgeting/variance analysis, and data-driven decision
-support. This repo is the environment and structural foundation for all
-subsequent assignments in the course, and will grow into a final portfolio
-project.
+BUS 751 (Python for Business Analytics) portfolio project, University of South Alabama. Research pathway.
 
-## Project Description
+**Question.** After ChatGPT's release in late 2022, did U.S. occupations whose tasks are more exposed to generative AI see different employment and wage changes than less-exposed occupations in the same industry? The unit is occupation x 4-digit industry x May reference year (BLS OEWS), exposure comes from Eloundou et al. (2024), and the estimate is a fixed-effects difference-in-differences with occupation-clustered, small-cluster inference. Results are framed as associations, not proof of displacement.
 
-This repository demonstrates:
-- Professional Python environment management using **UV**
-- Reproducible, version-controlled project organization
-- A folder structure suited to business analytics workflows (data ingestion,
-  source code, notebooks for exploration, tests, and documentation)
+> **Data.** The repository runs end to end on a committed **synthetic sample** with a planted employment effect and no wage effect, so every result is reproducible without licensed data. Real BLS, Eloundou and O*NET files are never committed; see [docs/DATA_ACCESS.md](docs/DATA_ACCESS.md).
 
-## Repository Structure
+## Quick start: the dashboard (Assignment 7)
 
-```
-business-analytics-portfolio/
-â”œâ”€â”€ src/                # Reusable Python modules (functions, classes, pipelines)
-â”œâ”€â”€ tests/              # Unit tests (pytest)
-â”œâ”€â”€ docs/               # Project documentation, including docs/AI_USE.md
-â”œâ”€â”€ data/
-â”‚   â”œâ”€â”€ raw/            # Original, unmodified source data (gitignored contents)
-â”‚   â””â”€â”€ processed/      # Cleaned/derived data (gitignored contents)
-â”œâ”€â”€ notebooks/          # Jupyter notebooks for exploration and analysis
-â”œâ”€â”€ pyproject.toml      # Project metadata and dependencies (UV-managed)
-â”œâ”€â”€ .gitignore
-â”œâ”€â”€ LICENSE
-â””â”€â”€ README.md
-```
+Requires [uv](https://docs.astral.sh/uv/) and Git. Install uv with `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"` (Windows) or `curl -LsSf https://astral.sh/uv/install.sh | sh` (macOS/Linux); uv installs Python itself.
 
-## Environment Setup (UV)
-
-This project uses [UV](https://docs.astral.sh/uv/) to manage the Python
-version, virtual environment, and dependencies.
-
-### 1. Install UV
-
-**macOS / Linux:**
-```bash
-curl -LsSf https://astral.sh/uv/install.sh | sh
-```
-
-**Windows (PowerShell):**
 ```powershell
-powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+git clone https://github.com/migfergu/migfergu-ba-portfolio-practice.git
+cd migfergu-ba-portfolio-practice
+uv sync --locked --extra dev          # exact environment from uv.lock
+uv run oews-pipeline run              # build the A4 database from the synthetic sample (~5 s)
+uv run streamlit run streamlit_app.py # open http://localhost:8501
 ```
 
-Verify installation:
-```bash
-uv --version
+Verify: `uv run pytest -q` (includes Streamlit smoke tests of every page) and `uv run oews-dashboard-check` (writes the dated clean-run record [docs/A7_CLEAN_RUN.md](docs/A7_CLEAN_RUN.md)).
+
+## Repository layout
+
+```
+streamlit_app.py          A7 dashboard entrypoint (navigation + shared sidebar)
+app_pages/                A7 dashboard pages (layout only; no estimation)
+src/oews_pipeline/        A4 ETL: extract, validate, transform, load -> data/processed/oews_genai.db
+src/oews_eda/             A5 EDA: loader, quality gate, descriptives, tests, figures
+src/oews_model/           A6 analytics engine: fixed effects, small-cluster inference, robustness, validation
+src/oews_dashboard/       A7 data-access layer, shared UI helpers, clean-run check
+tests/                    pytest suite for A4-A7
+notebooks/                analysis notebooks that import the packages above
+reports/                  committed figures and result tables (synthetic sample)
+data/sample/              synthetic sample inputs (raw/ and processed/ contents are git-ignored)
+docs/                     method, evaluation, data access, evidence maps, AI use disclosure
+config/sources.toml       source files, years and pre/post timing
+pyproject.toml, uv.lock   pinned environment (uv)
+.github/workflows/        CI: clean-clone install, pipeline, tests, dashboard check
 ```
 
-### 2. Clone the repository
+## Assignment 7: Dashboard & Release Readiness
 
-```bash
-git clone https://github.com/<your-username>/business-analytics-portfolio.git
-cd business-analytics-portfolio
-```
+A four-page Streamlit dashboard for workforce-planning leaders in finance and a research committee. It answers the question on the first screen (four KPIs, a plain-language bottom line with hypothesis verdicts, and what the evidence does not show), then lets the user check robustness (specification suite, placebo, leave-one-out, known-answer validation), explore occupations and industries (A5 descriptives with filters), and inspect data provenance and limitations.
 
-### 3. Create the environment and install dependencies
+* Reads the A4 database through the A5 loader, reuses A5 descriptive and plotting functions, and reads the saved A6 artifacts in `reports/model/`. Pages never re-estimate the model (enforced by a test).
+* Verifies provenance on every page: database input checksums vs. the model run log, and result-file checksums vs. the values recorded at run time.
+* Handles a missing database (one-click sample build), missing or edited results, and empty filters with messages that name the fix.
 
-UV reads `pyproject.toml` and creates a `.venv` automatically:
+Docs: [user guide](docs/APP_GUIDE.md) - [presentation demo path](docs/A7_DEMO_SCRIPT.md) - [clean-run record](docs/A7_CLEAN_RUN.md) - [rubric evidence map](docs/A7_EVIDENCE_MAP.md)
 
-```bash
-uv sync
-```
-
-This installs Python 3.10+ (downloading it if needed) and all dependencies
-listed in `pyproject.toml` (`pandas`, `numpy`, `jupyter`).
-
-### 4. Add additional dependencies as needed
-
-```bash
-uv add pandas numpy jupyter
-```
-
-Development-only tools (testing, linting) are grouped under the `dev` extra:
-
-```bash
-uv sync --extra dev
-```
-
-### 5. Run commands inside the environment
-
-```bash
-uv run python src/example.py
-uv run jupyter notebook
-uv run pytest
-```
-
-`uv run` executes a command inside the project's managed virtual environment
-without requiring manual activation.
-
-## Common UV Commands Reference
-
-| Command | Purpose |
-|---|---|
-| `uv --version` | Confirm UV is installed |
-| `uv sync` | Create/update the venv to match `pyproject.toml` |
-| `uv add <package>` | Add a new dependency |
-| `uv remove <package>` | Remove a dependency |
-| `uv run <command>` | Run a command inside the project environment |
-| `uv lock` | Regenerate the lockfile |
-| `uv venv` | Manually create a virtual environment |
-
-## Git Workflow
-
-Standard workflow for this repository:
-
-```bash
-git add <files>
-git commit -m "Descriptive message"
-git push origin main
-```
-
-Commit message convention used in this repo: short, imperative summary of
-what changed (e.g., "Add initial project structure", "Configure UV
-environment", "Add documentation").
-
-## AI Use Disclosure
-
-Per course policy, `docs/AI_USE.md` documents where and how AI tools were
-used in this repository. It is kept current as the project evolves.
-
-## Author
-
-Miguel L. Ferguson II â€” PhD student, Business Analytics, University of South
-Alabama; finance and business analytics professional.
 ## Assignment 4: Database & Data Pipeline
 
 Builds a SQLite database for **Generative AI Exposure and Financial Analyst Employment and Wages** from BLS OEWS, Eloundou et al. (2024) exposure scores, and O*NET Job Zones.
@@ -143,7 +63,7 @@ cd migfergu-ba-portfolio-practice
 uv sync                           # install dependencies from uv.lock
 uv run oews-pipeline run          # build data/processed/oews_genai.db from the synthetic sample
 uv run oews-pipeline rerun-check  # run twice, prove no duplicates -> docs/RERUN_CHECK.md
-uv run pytest -q                  # A4 tests (the full suite now has more; see below)
+uv run pytest -q                  # full test suite (A4-A7)
 ```
 
 Using the real data instead of the sample: see [docs/DATA_ACCESS.md](docs/DATA_ACCESS.md), then run `uv run oews-pipeline run --source raw`.
@@ -166,7 +86,7 @@ Reusable EDA package `src/oews_eda/` on top of the A4 database: row definition a
 uv sync
 uv run oews-pipeline run   # build the database (sample; --source raw for real data)
 uv run oews-eda            # regenerate reports/figures/*.png and reports/eda/*
-uv run pytest -q           # 42 tests in total (A4, A5, known-answer, A6)
+uv run pytest -q           # full test suite (A4-A7)
 uv run oews-eda --verify-against reports/eda/eda_run_log.json   # input SHA-256 check
 ```
 
@@ -187,7 +107,7 @@ uv sync --extra dev
 uv run oews-pipeline run                 # A4 database
 uv run oews-model                        # estimates, robustness, validation, fig12-14 (~3-4 min)
 uv run oews-model simulate               # Monte Carlo calibration tables (~5 min)
-uv run pytest -q                         # 42 tests
+uv run pytest -q                         # full test suite (A4-A7)
 uv run oews-model --verify-against reports/model/model_run_log.json
 ```
 
@@ -196,4 +116,12 @@ uv run oews-model --verify-against reports/model/model_run_log.json
 - [Research interpretation](docs/A6_INTERPRETATION.md) (magnitude, inferential boundary, limitations)
 - [Analysis notebook](notebooks/03_model.ipynb) (imports `oews_model`)
 - [Rubric evidence map](docs/A6_EVIDENCE_MAP.md)
-- Result artifacts for the A7 dashboard: `reports/model/`
+- Result artifacts read by the A7 dashboard: `reports/model/`
+
+## AI use disclosure
+
+Per course policy, [docs/AI_USE.md](docs/AI_USE.md) documents where and how AI tools were used, one dated entry per assignment.
+
+## Author
+
+Miguel L. Ferguson II - PhD student, Business Analytics, University of South Alabama.

@@ -71,6 +71,16 @@ my own project conventions before submitting.
 
 **Verification:** _[Ferg: list what you ran locally, e.g. `uv sync --extra dev`, `uv run oews-pipeline run`, `uv run oews-eda`, `uv run oews-model`, `uv run oews-model simulate`, `uv run pytest -q`, the notebook, and the outputs you reviewed.]_ All reported numbers come from the synthetic sample and are labeled as such.
 
+## Assignment 7: Dashboard & Release Readiness
+
+**Tool:** Claude (Anthropic), November 2026.
+
+**What the AI produced:** a first draft of the Streamlit dashboard (`streamlit_app.py`, the four pages in `app_pages/`), the `src/oews_dashboard/` package (data-access layer with provenance checks, shared UI helpers, and the `oews-dashboard-check` clean-run verifier), `tests/test_dashboard.py` (data-layer tests and Streamlit AppTest smoke tests, including missing-database, missing-results and empty-filter cases), `.streamlit/config.toml`, the GitHub Actions workflow `.github/workflows/dashboard.yml`, and first drafts of `docs/APP_GUIDE.md`, `docs/A7_DEMO_SCRIPT.md`, `docs/A7_EVIDENCE_MAP.md` and the rewritten README. It reused my A5 and A6 functions and artifacts rather than re-implementing analysis. It could not install Streamlit in its own environment, so it tested the page logic against a stand-in; the real AppTest run and the dated clean-run record were produced on my machine.
+
+**What is mine:** the research question, estimand, hypotheses, unit of analysis and every number on screen (all from my A3-A6 work); the choice of stakeholder audience (finance workforce planners and the research committee); the decision that the dashboard reads saved A6 results instead of re-estimating; the default to wild-cluster-bootstrap intervals; and the framing of results as associations from a synthetic sample.
+
+**Verification:** On my Windows machine I ran `uv lock`, `uv sync --locked --extra dev`, `uv run oews-pipeline run`, `uv run pytest -q` (including the Streamlit AppTest smoke tests) and `uv run oews-dashboard-check`, which wrote the dated record in `docs/A7_CLEAN_RUN.md`, then launched the app with `uv run streamlit run streamlit_app.py` and reviewed each page. All displayed numbers come from the synthetic sample and are labeled as such.
+
 ---
 
 _Update this file as AI assistance is used in future assignments - add a

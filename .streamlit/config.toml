@@ -1,0 +1,11 @@
+# Streamlit settings for the A7 dashboard (no secrets live here; the app needs none).
+[browser]
+gatherUsageStats = false
+
+[server]
+runOnSave = false
+
+[theme]
+# Light base so the white-background A5/A6 Matplotlib figures match the page; Okabe-Ito blue accent.
+base = "light"
+primaryColor = "#0072B2"

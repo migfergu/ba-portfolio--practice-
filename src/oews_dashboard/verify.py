@@ -1,0 +1,147 @@
+"""Clean-run verification for Assignment 7: ``uv run oews-dashboard-check``.
+
+Run it from a fresh clone after ``uv sync``. It:
+
+1. records the environment (OS, Python, Streamlit, pandas, git commit, lockfile hash);
+2. builds the sample database if it is missing (or uses ``$OEWS_DB_PATH``);
+3. loads the saved A6 results and checks provenance (input and output SHA-256);
+4. loads the entrypoint and every page in Streamlit's headless AppTest runtime, failing on any
+   exception or error element;
+5. writes a dated record to ``docs/A7_CLEAN_RUN.md`` (``--no-write`` to skip) and exits non-zero
+   if any step failed.
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import platform
+import subprocess
+import sys
+import tempfile
+from datetime import UTC, datetime
+from importlib import metadata
+from pathlib import Path
+
+from . import data_access as da
+
+REPO = da.REPO_ROOT
+RECORD = REPO / "docs" / "A7_CLEAN_RUN.md"
+
+
+def _version(pkg: str) -> str:
+    try:
+        return metadata.version(pkg)
+    except metadata.PackageNotFoundError:
+        return "not installed"
+
+
+def _git(*args: str) -> str:
+    try:
+        return subprocess.run(["git", *args], cwd=REPO, capture_output=True, text=True, timeout=20,
+                              check=True).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        return "unknown"
+
+
+def environment() -> dict[str, str]:
+    lock = REPO / "uv.lock"
+    return {"Date (UTC)": datetime.now(UTC).replace(microsecond=0).isoformat(),
+            "Git commit": _git("rev-parse", "--short", "HEAD"),
+            "Uncommitted changes": "yes" if _git("status", "--porcelain") else "no",
+            "OS": f"{platform.system()} {platform.release()}",
+            "Python": platform.python_version(),
+            "streamlit": _version("streamlit"), "pandas": _version("pandas"), "numpy": _version("numpy"),
+            "uv.lock SHA-256": hashlib.sha256(lock.read_bytes()).hexdigest()[:16] if lock.exists() else "missing"}
+
+
+def run_checks() -> list[tuple[str, bool, str]]:
+    """Every verification step as (step, passed, detail)."""
+    steps: list[tuple[str, bool, str]] = []
+
+    db = da.resolve_db()
+    if not db.exists():
+        from oews_pipeline.pipeline import run_pipeline
+        try:
+            with tempfile.TemporaryDirectory() as tmp:
+                run_pipeline("sample", db_path=db, report_md=None, report_json_dir=Path(tmp))
+            steps.append(("Build sample database (`uv run oews-pipeline run`)", True, str(db.relative_to(REPO))
+                          if db.is_relative_to(REPO) else str(db)))
+        except Exception as exc:  # noqa: BLE001
+            steps.append(("Build sample database", False, str(exc)))
+            return steps
+    else:
+        steps.append(("Database present", True, da.etl_info(db)["finished_at"]))
+
+    try:
+        panel = da.load_panel(db)
+        q = da.quality_gate(panel)
+        steps.append(("A5 data-quality gate", q["passed"], f"{len(panel)} panel rows"))
+    except da.DataUnavailable as exc:
+        steps.append(("Load analysis panel", False, str(exc)))
+
+    try:
+        results = da.load_results()
+        h = da.headline(results, "emp", "wcr")
+        steps.append(("Load saved A6 results (no re-estimation)", True,
+                      f"employment {h['pct']:+.2f}% per 1 SD, 95% CI {h['pct_low']:+.2f}% to {h['pct_high']:+.2f}%"))
+        prov = da.provenance(results, db)
+        steps.append(("Input checksums match model run log", bool(prov.inputs_match),
+                      ", ".join(prov.mismatched_inputs) or "7 of 7 sources"))
+        steps.append(("Result files unchanged since model run", prov.outputs_intact,
+                      ", ".join(prov.changed_outputs) or "all outputs match recorded SHA-256"))
+    except da.DataUnavailable as exc:
+        steps.append(("Load saved A6 results", False, str(exc)))
+
+    try:
+        from streamlit.testing.v1 import AppTest
+    except ImportError:
+        steps.append(("Streamlit AppTest", False, "streamlit not installed: run `uv sync`"))
+        return steps
+    pages = [REPO / "streamlit_app.py", *sorted((REPO / "app_pages").glob("*.py"))]
+    for page in pages:
+        for outcome in da.OUTCOMES:
+            at = AppTest.from_file(str(page), default_timeout=120)
+            at.session_state["outcome_label"] = outcome
+            at.run()
+            problems = [str(e.value)[:120] for e in at.exception] + [str(e.value)[:120] for e in at.error]
+            name = page.relative_to(REPO).as_posix()
+            steps.append((f"Render `{name}` ({outcome})", not problems,
+                          "; ".join(problems) or f"{len(at.metric)} KPIs, {len(at.dataframe)} tables, no exceptions"))
+    return steps
+
+
+def write_record(env: dict[str, str], steps: list[tuple[str, bool, str]], path: Path = RECORD) -> Path:
+    ok = all(p for _, p, _ in steps)
+    lines = ["# Assignment 7 clean-run record", "",
+             ("Generated by `uv run oews-dashboard-check` (src/oews_dashboard/verify.py). Re-run it after any "
+              "change; the file is overwritten with the latest result."), "",
+             f"**Overall: {'PASS' if ok else 'FAIL'}**", "", "## Environment", "", "| Item | Value |", "|---|---|"]
+    lines += [f"| {k} | {v} |" for k, v in env.items()]
+    lines += ["", "## Steps", "", "| Step | Result | Detail |", "|---|---|---|"]
+    lines += [f"| {s} | {'PASS' if p else 'FAIL'} | {d.replace('|', '/')} |" for s, p, d in steps]
+    lines += ["", "## Clean-clone procedure this record verifies", "", "```powershell",
+              "git clone https://github.com/migfergu/migfergu-ba-portfolio-practice.git",
+              "cd migfergu-ba-portfolio-practice", "uv sync --locked --extra dev",
+              "uv run oews-pipeline run", "uv run oews-dashboard-check",
+              "uv run streamlit run streamlit_app.py", "```", ""]
+    path.write_text("\n".join(lines), encoding="utf-8")
+    return path
+
+
+def main(argv: list[str] | None = None) -> int:
+    ap = argparse.ArgumentParser(prog="oews-dashboard-check", description=__doc__.splitlines()[0])
+    ap.add_argument("--no-write", action="store_true", help="print results without writing docs/A7_CLEAN_RUN.md")
+    args = ap.parse_args(argv)
+    env = environment()
+    steps = run_checks()
+    for s, p, d in steps:
+        print(f"{'PASS' if p else 'FAIL'}  {s}  -  {d}")
+    if not args.no_write:
+        print(f"record: {write_record(env, steps)}")
+    ok = all(p for _, p, _ in steps)
+    print("OVERALL:", "PASS" if ok else "FAIL")
+    return 0 if ok else 1
+
+
+if __name__ == "__main__":
+    sys.exit(main())

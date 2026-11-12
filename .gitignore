@@ -57,3 +57,6 @@ data/processed/*.db-*
 logs/
 data/raw/*
 !data/raw/README.md
+
+# A7 dashboard
+.streamlit/secrets.toml
